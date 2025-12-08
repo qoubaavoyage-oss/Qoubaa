@@ -18,7 +18,7 @@
   <nav>
     <div style="display:flex;align-items:center;gap:16px">
       <div class="nav__logo">
-        <img src="assets/logo qoubaa transparent.png" alt="شعار الوكالة">
+        <img src="assets/logo qoubaa transparent.png" alt="شعار الوكالة" width="100px" >
       </div>
       <div style="margin-inline-start:12px">
         <ul class="nav__links" id="nav-links">
@@ -58,15 +58,30 @@
             </div>
 
             <!-- Destination / city / to -->
-            <div class="field" id="field-destination">
-              <label for="destination">الوجهة / المدينة</label>
-              <select id="destination">
-                <option>مكة المكرمة</option>
-                <option>المدينة المنورة</option>
-                <option>جدة</option>
-                <option>الرياض</option>
-              </select>
-            </div>
+        <div class="field" id="field-destination">
+  <label for="destinationSelect">الوجهة / البلد</label>
+  <select id="destinationSelect">
+    <option value="">اختر وجهتك</option>
+    <option>بلد اخر</option>
+    <option>السعودية</option>
+    <option>تركيا</option>
+    <option>الإمارات</option>
+    <option>فرنسا</option>
+    <option>إسبانيا</option>
+    <option>مصر</option>
+    <option>تونس</option>
+    <option>المغرب</option>
+    <option>قطر</option>
+    <option>البحرين</option>
+    <option>إيطاليا</option>
+    <option>ألمانيا</option>
+    <option>هولندا</option>
+    <option>ماليزيا</option>
+    <option>إندونيسيا</option>
+  </select>
+</div>
+
+
 
             <!-- For flight: from -->
             <div class="field" id="field-from" style="display:none">
@@ -81,22 +96,23 @@
             </div>
 
             <!-- Check-in / depart -->
-            <div class="field">
-              <label for="depart">تاريخ المغادرة</label>
-              <input id="depart" type="date">
-            </div>
+          <!-- Check-in / depart -->
+          <div class="field">
+            <label for="depart">تاريخ المغادرة</label>
+            <input id="depart" type="date">
+          </div>
 
-            <!-- Return / checkout -->
-            <div class="field" id="field-return">
-              <label for="return">تاريخ العودة (إن وجد)</label>
-              <input id="return" type="date">
-            </div>
+          <!-- Return / checkout -->
+          <div class="field" id="field-return">
+            <label for="return">تاريخ العودة</label>
+            <input id="return" type="date">
+          </div>
 
-            <!-- Hotel specific: nights -->
-            <div class="field" id="field-nights" style="display:none">
-              <label for="nights">عدد الليالي</label>
-              <input id="nights" type="number" min="1" value="1">
-            </div>
+          <!-- Hotel specific: nights -->
+          <div class="field" id="field-nights">
+            <label for="nights">عدد الليالي</label>
+            <input id="nights" type="number" min="1" value="1">
+          </div>
 
             <!-- Flight specific: class -->
             <div class="field" id="field-flightclass" style="display:none">
