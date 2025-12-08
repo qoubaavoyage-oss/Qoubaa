@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>قُبَـعـة للسفر - عمرة، فنادق، وتذاكر طيران</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+  
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav>
+    <div style="display:flex;align-items:center;gap:16px">
+      <div class="nav__logo">
+        <img src="assets/logo qoubaa transparent.png" alt="شعار الوكالة">
+      </div>
+      <div style="margin-inline-start:12px">
+        <ul class="nav__links" id="nav-links">
+          <li><a href="#home">الرئيسية</a></li>
+          <li><a href="#about">باقات العمرة</a></li>
+          <li><a href="#tour">الخدمات</a></li>
+          <li><a href="#package">باقة مميزة</a></li>
+          <li><a href="#contact">تواصل</a></li>
+          <li><a href="#book">احجز الآن</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav__btns">
+      <button class="btn" onclick="document.getElementById('searchModal').style.display='flex'">احجز الآن</button>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header id="home">
+    <div class="header__content">
+      <p>خدمات سفر متكاملة: عمرة، فنادق، وتذاكر طيران</p>
+      <h1>نحن نسهّل رحلتك من التخطيط إلى العودة</h1>
+
+      <div class="header__btns" style="margin-top:14px">
+        <!-- SEARCH FORM -->
+        <div class="search-form" aria-label="نموذج البحث">
+          <div class="fields-wrapper">
+            <!-- Service type -->
+            <div class="field search-service">
+              <label for="serviceType">نوع الخدمة</label>
+              <select id="serviceType">
+                <option value="umrah">العمرة</option>
+                <option value="hotel">حجز فندق</option>
+                <option value="flight">حجز تذكرة طيران</option>
+              </select>
+            </div>
+
+            <!-- Destination / city / to -->
+            <div class="field" id="field-destination">
+              <label for="destination">الوجهة / المدينة</label>
+              <select id="destination">
+                <option>مكة المكرمة</option>
+                <option>المدينة المنورة</option>
+                <option>جدة</option>
+                <option>الرياض</option>
+              </select>
+            </div>
+
+            <!-- For flight: from -->
+            <div class="field" id="field-from" style="display:none">
+              <label for="flightFrom">المغادرة من</label>
+              <input id="flightFrom" type="text" placeholder="مثال: القاهرة">
+            </div>
+
+            <!-- For flight: to -->
+            <div class="field" id="field-to" style="display:none">
+              <label for="flightTo">الوصول إلى</label>
+              <input id="flightTo" type="text" placeholder="مثال: اسطنبول">
+            </div>
+
+            <!-- Check-in / depart -->
+            <div class="field">
+              <label for="depart">تاريخ المغادرة</label>
+              <input id="depart" type="date">
+            </div>
+
+            <!-- Return / checkout -->
+            <div class="field" id="field-return">
+              <label for="return">تاريخ العودة (إن وجد)</label>
+              <input id="return" type="date">
+            </div>
+
+            <!-- Hotel specific: nights -->
+            <div class="field" id="field-nights" style="display:none">
+              <label for="nights">عدد الليالي</label>
+              <input id="nights" type="number" min="1" value="1">
+            </div>
+
+            <!-- Flight specific: class -->
+            <div class="field" id="field-flightclass" style="display:none">
+              <label for="flightClass">درجة السفر</label>
+              <select id="flightClass">
+                <option>اقتصادية</option>
+                <option>رجال الأعمال</option>
+                <option>درجة أولى</option>
+              </select>
+            </div>
+
+            <!-- Guests -->
+            <div class="field">
+              <label>الركاب</label>
+              <div class="guest-selector" id="guestSelector">
+                <input type="text" id="guestInput" placeholder="عدد الركاب" readonly>
+                <div class="guest-dropdown" id="guestDropdown">
+                  <div class="guest-row">
+                    <div class="guest-info"><strong>البالغون</strong><div style="color:var(--muted);font-size:12px">12 سنة فما فوق</div></div>
+                    <div class="guest-controls"><button class="minus" data-type="adults">−</button><span id="adultsCount">1</span><button class="plus" data-type="adults">+</button></div>
+                  </div>
+                  <div class="guest-row">
+                    <div class="guest-info"><strong>الأطفال</strong><div style="color:var(--muted);font-size:12px">2 - 11 سنة</div></div>
+                    <div class="guest-controls"><button class="minus" data-type="children">−</button><span id="childrenCount">0</span><button class="plus" data-type="children">+</button></div>
+                  </div>
+                  <div class="guest-row">
+                    <div class="guest-info"><strong>الرضع</strong><div style="color:var(--muted);font-size:12px">أقل من سنتين</div></div>
+                    <div class="guest-controls"><button class="minus" data-type="infants">−</button><span id="infantsCount">0</span><button class="plus" data-type="infants">+</button></div>
+                  </div>
+                  <button class="done-btn" id="doneGuests">تم</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Search -->
+            <button class="search-btn" id="searchBtn">🔍 بحث</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="header__image">
+      <img src="assets/The_Ka'ba,_Great_Mosque_of_Mecca,_Saudi_Arabia_(4).jpg" alt="الكعبة">
+    </div>
+  </header>
+
+  <!-- باقات و محتوى (أمثلة كما سابقاً) -->
+  <section class="section__container destination__container" id="about">
+    <h2 class="section__header">باقات العمرة الأكثر طلباً</h2>
+    <p class="section__description">اختر من باقاتنا المتنوعة التي تغطي الإقامة، النقل، والدليل.</p>
+
+    <div class="destination__grid">
+      <div class="destination__card">
+        <img src="assets/The_Ka'ba,_Great_Mosque_of_Mecca,_Saudi_Arabia_(4).jpg" alt="الكعبة">
+        <div class="destination__card__details">
+          <div><h4>عمرة اقتصادية</h4><p>إقامة 3 نجوم - خطوات من الحرم</p></div>
+           <button id="btnOmra" class="omra-btn">عرض برنامج العمرة</button>
+          <div class="destination__rating"><span style="color:#ffd54d"><i class="ri-star-fill"></i></span>4.6</div>
+        </div>
+      </div>
+
+      <div class="destination__card">
+        <img src="assets/istanbul.webp" alt="المدينة">
+        <div class="destination__card__details">
+          <div><h4>حجز فندق مريح</h4><p>فنادق قرب الحرم ومرافق مميزة</p></div>
+          <div class="destination__rating"><span style="color:#ffd54d"><i class="ri-star-fill"></i></span>4.7</div>
+        </div>
+      </div>
+
+      <div class="destination__card">
+        <img src="assets/destination-3.jpg" alt="خدمة">
+        <div class="destination__card__details">
+          <div><h4>تذاكر طيران</h4><p>رحلات متنوعة إلى وجهات عالمية</p></div>
+          <div class="destination__rating"><span style="color:#ffd54d"><i class="ri-star-fill"></i></span>4.8</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- خدمات مختصرة -->
+  <section class="section__container journey__container" id="tour">
+    <h2 class="section__header">خدماتنا</h2>
+    <p class="section__description">نقدم خدمات متكاملة للعمرة، حجز الفنادق، وحجز التذاكر.</p>
+    <div class="journey__grid">
+      <div class="journey__card">
+        <div class="journey__card__bg"><h4>استخراج التأشيرات</h4></div>
+        <div class="journey__card__content"><h4>إجراءات سريعة</h4><p>مساعدة كاملة في استخراج التأشيرات الضرورية.</p></div>
+      </div>
+      <div class="journey__card">
+        <div class="journey__card__bg"><h4>حجوزات الفنادق</h4></div>
+        <div class="journey__card__content"><h4>اختيارات متعددة</h4><p>فنادق لجميع المستويات القريبة من الحرم.</p></div>
+      </div>
+      <div class="journey__card">
+        <div class="journey__card__bg"><h4>تذاكر الطيران</h4></div>
+        <div class="journey__card__content"><h4>رحلات مريحة</h4><p>خيارات مرنة لرحلات الذهاب والعودة.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- showcase -->
+  <section class="section__container showcase__container" id="package">
+    <div class="showcase__image"><img src="assets/Pack omra.jpg" alt="عرض" class="rounded"></div>
+    <div class="showcase__content">
+      <h4>باقة شاملة من قُبَـعـة</h4>
+      <p>نوفر باقات مخصصة تناسب حاجتك: عمرة، فندق، أو تذكرة طيران — مع خدمة عملاء عربية على مدار الساعة.</p>
+      <div class="showcase__btn"><button class="btn" onclick="document.getElementById('searchModal').style.display='flex'">احجز الآن <span><i class="ri-arrow-left-line"></i></span></button></div>
+    </div>
+  </section>
+
+  <!-- إحصائيات -->
+  <section class="section__container banner__container">
+    <div class="banner__card"><h4>10+</h4><p>سنوات الخبرة</p></div>
+    <div class="banner__card"><h4>12K</h4><p>معتمر سعيد</p></div>
+    <div class="banner__card"><h4>4.8</h4><p>تقييم عام</p></div>
+  </section>
+
+  <!-- عملاء -->
+  <section class="section__container client__container">
+    <h2 class="section__header">تجارب معتمرين</h2>
+    <p class="section__description">آراء من زبائننا حول خدمات العمرة والفنادق.</p>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="client__card">
+            <div class="client__content"><div class="client__rating">★★★★★</div><p>تنظيم ممتاز ومتابعة من البداية للنهاية.</p></div>
+            <div class="client__details"><img src="assets/client-1.jpg" alt="عميل"><div><h4>عميل</h4><h5>معتمر</h5></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="section__container footer__container">
+      <div class="footer__col">
+        <div class="footer__logo"><a href="#" class="logo" style="color:var(--white);font-weight:800;font-size:18px">قُبَـعـة</a></div>
+        <p style="color:rgba(255,255,255,0.8)">وكالة متخصّصة بتنظيم رحلات العمرة وحجوزات الفنادق وتذاكر الطيران.</p>
+        <ul class="footer__socials" style="display:flex;gap:10px;margin-top:12px"><li><a href="#" style="color:var(--white)"><i class="ri-facebook-fill"></i></a></li><li><a href="#" style="color:var(--white)"><i class="ri-instagram-line"></i></a></li></ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>روابط سريعة</h4>
+        <ul class="footer__links"><li><a href="#home">الرئيسية</a></li><li><a href="#about">باقات العمرة</a></li><li><a href="#tour">الخدمات</a></li><li><a href="#contact">تواصل</a></li></ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>تواصل معنا</h4>
+        <ul class="footer__links"><li><a href="#"><span><i class="ri-phone-fill"></i></span> +966 5X XXX XXXX</a></li><li><a href="#"><span><i class="ri-record-mail-line"></i></span> info@qoubaa.com</a></li><li><a href="#"><span><i class="ri-map-pin-2-fill"></i></span> مكة المكرمة</a></li></ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>اشترك</h4>
+        <form action="#"><input type="text" placeholder="أدخل بريدك الإلكتروني" style="padding:10px;border-radius:8px;border:1px solid #dfeeff;width:100%;margin-bottom:8px"><button class="btn" style="width:100%">اشترك</button></form>
+      </div>
+    </div>
+    <div class="footer__bar" style="text-align:center;color:rgba(255,255,255,0.65);padding:14px 18px">جميع الحقوق محفوظة © 2024 قُبَـعـة</div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="searchModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close" aria-label="اغلاق" onclick="document.getElementById('searchModal').style.display='none'">&times;</button>
+      <h2 id="modalTitle">تفاصيل الطلب</h2>
+
+      <form id="modalForm">
+        <div class="modal-grid">
+          <div class="field"><label for="modalService">نوع الخدمة</label><input id="modalService" type="text" readonly></div>
+          <div class="field"><label for="modalDestination">الوجهة</label><input id="modalDestination" type="text" readonly></div>
+
+          <div class="field"><label for="nom">الاسم الكامل</label><input id="nom" type="text" required></div>
+          <div class="field"><label for="to_emailClient">البريد الإلكتروني</label><input id="to_emailClient" type="email" required></div>
+
+          <div class="field"><label for="to_telephone">رقم الجوال</label><input id="to_telephone" type="tel" required></div>
+          <div class="field"><label for="modalDates">التواريخ</label><input id="modalDates" type="text" readonly></div>
+
+          <div class="field"><label for="modalExtras">تفاصيل إضافية</label><input id="modalExtras" type="text"></div>
+          <div class="field"><label for="modalGuests">الركاب</label><input id="modalGuests" type="text" readonly></div>
+        </div>
+
+        <button class="submit-btn" type="submit">إرسال الطلب</button>
+      </form>
+    </div>
+  </div>
+  <!-- Modal Omra -->
+<div id="omraModal" class="modal">
+  <div class="modal-content program-box">
+    <span class="closeOmra">&times;</span>
+    <h2>برنامج العمرة</h2>
+
+    <div class="program">
+      <p><strong>اليوم 01 :</strong> الوصول إلى فندق منازل الصافية بالمدينة المنورة واستلام الغرف.</p>
+      <p><strong>اليوم 02 :</strong> زيارة المعالم التاريخية للمسجد النبوي.</p>
+      <p><strong>اليوم 03 :</strong> معالم المدينة: مسجد قباء – مسجد القبلتين – جبل أحد – مقبرة الشهداء.</p>
+      <p><strong>اليوم 04 :</strong> يوم حر للتسوق.</p>
+      <p><strong>اليوم 05 :</strong> زيارة مجمع طباعة المصحف الشريف وبئر غرس.</p>
+      <p><strong>اليوم 06 :</strong> الانطلاق بالحافلات المكيفة إلى مكة المكرمة لأداء العمرة.</p>
+      <p><strong>اليوم 07 :</strong> يوم حر.</p>
+      <p><strong>اليوم 08 :</strong> يوم حر.</p>
+      <p><strong>اليوم 09 :</strong> يوم حر.</p>
+      <p><strong>اليوم 10 :</strong> معالم مكة: جبل النور، عرفات، مزدلفة، منى، الجمرات، مع التحضير لأداء عمرة ثانية عند العودة.</p>
+      <p><strong>اليوم 11 :</strong> يوم حر.</p>
+      <p><strong>اليوم 12 :</strong> طواف تطوّع ولمس الكعبة المشرفة.</p>
+      <p><strong>اليوم 13 :</strong> يوم حر.</p>
+      <p><strong>اليوم 14 :</strong> يوم حر.</p>
+      <p><strong>اليوم 15 :</strong> الاستعداد ومغادرة الفندق إلى مطار جدة.</p>
+    </div>
+
+  </div>
+</div>
+
+  <!-- سكربتات -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
