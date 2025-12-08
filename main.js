@@ -202,3 +202,72 @@ document.getElementById("modalForm").addEventListener("submit", e => {
     })
     .catch(() => alert("خطأ أثناء الإرسال"));
 });
+/* ====== SYNC NIGHTS / DATES (HÔTEL) ====== */
+function computeReturnFromNights() {
+  const depVal = depart.value;
+  const n = parseInt(nights.value) || 1;
+  if (!depVal) return;
+  const start = new Date(depVal);
+  const end = new Date(start);
+  end.setDate(start.getDate() + n);
+  // set return and min
+  returnDate.min = depVal;
+  returnDate.value = end.toISOString().split('T')[0];
+}
+
+function computeNightsFromDates() {
+  const depVal = depart.value;
+  const retVal = returnDate.value;
+  if (!depVal || !retVal) return;
+  const start = new Date(depVal);
+  const end = new Date(retVal);
+  let diff = Math.round((end - start) / (1000 * 60 * 60 * 24));
+  if (diff <= 0) diff = 1;
+  nights.value = diff;
+}
+
+/* Quand on change la date de départ */
+depart.addEventListener('change', () => {
+  // for all services return can't be before depart
+  if (depart.value) {
+    returnDate.min = depart.value;
+  }
+  // Si nights visible (hotel) on calcule le retour en fonction de nights
+  if (serviceType.value === 'hotel') {
+    computeReturnFromNights();
+  } else {
+    // pour flights/umrah on garde au moins la même date
+    if (returnDate.value && returnDate.value < depart.value) {
+      returnDate.value = depart.value;
+    }
+  }
+});
+
+/* Quand on change la date de retour */
+returnDate.addEventListener('change', () => {
+  // empêcher date < départ
+  if (depart.value && returnDate.value < depart.value) {
+    returnDate.value = depart.value;
+  }
+  // si hotel -> recalculer nights
+  if (serviceType.value === 'hotel') {
+    computeNightsFromDates();
+  }
+});
+
+/* Quand on change le nombre de nuits (input) */
+nights.addEventListener('input', () => {
+  // limite minimum 1
+  if (!nights.value || parseInt(nights.value) < 1) nights.value = 1;
+  if (serviceType.value === 'hotel') {
+    computeReturnFromNights();
+  }
+});
+
+/* Au changement du type de service : si on vient sur hotel on calcule les valeurs si depart exist */
+serviceType.addEventListener('change', () => {
+  if (serviceType.value === 'hotel') {
+    // si depart défini -> recalcul
+    if (depart.value) computeReturnFromNights();
+  }
+});
