@@ -319,5 +319,196 @@ nav {
   opacity: 1;
   transform: translateY(0);
 }
+/* ----- Slider Wrapper ----- */
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Convert grid to horizontal scrolling */
+.slider {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* ----- Arrows ----- */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.85);
+  border: none;
+  font-size: 28px;
+  padding: 8px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  transition: 0.25s ease;
+}
+
+.arrow:hover {
+  background: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Left and Right positions */
+.arrow.left {
+  left: -10px;
+}
+
+.arrow.right {
+  right: -10px;
+}
+
+/* Cards size stays EXACTLY your style */
+.destination__card {
+  min-width: 320px;
+}
+/* ============ wrapper & layout ============ */
+.omra-wrapper{
+  position: relative;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: 8px 12px;
+}
+
+/* slider: affichage en une ligne, 3 cartes visibles parfaitement */
+.omra-slider{
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 48px; /* espace pour que les flèches n'empiètent pas */
+}
+
+/* hide scrollbar (webkit) */
+.omra-slider::-webkit-scrollbar{ height: 8px; display: none; }
+
+/* chaque carte: exactement 1/3 de l'espace visible (3 cartes visibles) */
+.omra-card,
+.destination__card { /* applique aux deux classes si tu utilises destination__card */
+  flex: 0 0 calc((100% - 44px) / 3); /* 44px = gap * (n-1) (22*2) */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* image taille fixe dans la carte */
+.omra-card img,
+.destination__card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+/* content de la carte */
+.omra-card-body,
+.destination__card__details {
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ========= flèches (overlay centrées verticalement) ========= */
+.omra-arrow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 6px 20px rgba(2,16,40,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 30;
+  transition: transform .18s ease, background .18s;
+  color: var(--text);
+}
+
+/* position */
+.omra-arrow.left { left: 12px; }
+.omra-arrow.right { right: 12px; }
+
+/* hover */
+.omra-arrow:hover { transform: translateY(-50%) scale(1.04); background: #fff; }
+
+/* small visual tweak: semi-transparent background on dark */
+.omra-arrow { background: rgba(255,255,255,0.92); }
+
+/* ========== responsive: 3/2/1 cards ========== */
+@media (max-width: 980px){
+  .omra-card,
+  .destination__card { flex: 0 0 calc((100% - 22px) / 2); } /* 2 cartes */
+  .omra-slider{ padding-inline:36px; }
+}
+@media (max-width: 600px){
+  .omra-card,
+  .destination__card { flex: 0 0 100%; } /* 1 carte */
+  .omra-arrow { display: none; } /* cachées sur mobile */
+  .omra-slider{ padding-inline:14px; gap:14px; }
+}
+
+/* ========== prevent partial clipping (extra safety) ========== */
+.omra-slider { align-items: stretch; }
+.omra-card { min-height: 320px; }
+
+/* optional: snap to cards for cleaner scroll UX */
+.omra-slider { scroll-snap-type: x mandatory; }
+.omra-card { scroll-snap-align: center; }
+
+/* ensure no conflicting width rules override this */
+.destination__card { box-sizing: border-box; }
+/* إخفاء الحقول المطلوبة داخل المودال */
+#modalService,
+#modalDestination,
+#modalGuests,
+#modalExtras {
+  display: none !important;
+}
+
+/* إخفاء الحاويات نفسها (label + input) */
+#modalService::-webkit-input-placeholder,
+#modalDestination::-webkit-input-placeholder,
+#modalGuests::-webkit-input-placeholder,
+#modalExtras::-webkit-input-placeholder {}
+
+/* إخفاء جميع الحقول غير المرغوبة في المودال */
+#modalService,
+#modalDestination,
+#modalGuests,
+#modalExtras,
+#modalDates {
+  display: none !important;
+}
+
+/* إخفاء الحقول مع الليبل الخاصة بها داخل المودال */
+#modalForm .field:has(#modalService),
+#modalForm .field:has(#modalDestination),
+#modalForm .field:has(#modalGuests),
+#modalForm .field:has(#modalExtras),
+#modalForm .field:has(#modalDates) {
+  display: none !important;
+}
+
+
 
 

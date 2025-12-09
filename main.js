@@ -176,10 +176,19 @@ document.getElementById("searchBtn").addEventListener("click", (e) => {
 
   modal.style.display = "flex";
 });
+function resetModalForm() {
+  document.getElementById("modalForm").reset();
+
+  // cacher le message de succès
+  document.getElementById("successMessage").style.display = "none";
+
+  // réafficher le formulaire
+  document.getElementById("modalForm").style.display = "block";
+}
 
 /************** MODAL CLOSE **************/
 const modal = document.getElementById("searchModal");
-window.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
+window.onclick = e => { if (e.target === modal) modal.style.display = "none";     resetModalForm(); };
 document.onkeydown = e => { if (e.key === "Escape") modal.style.display = "none"; };
 
 /************** SEND EMAIL **************/
@@ -198,15 +207,19 @@ document.getElementById("modalForm").addEventListener("submit", e => {
     to_email: "resarvationqoubaa@outlook.fr"
   };
 
-  console.log("إرسال:", params);
-
   emailjs.send("service_9kew0hd", "template_t76cigt", params)
     .then(() => {
-      alert("تم إرسال طلبك بنجاح!");
-      modal.style.display = "none";
+      document.getElementById("modalForm").style.display = "none";
+      document.getElementById("successMessage").style.display = "block";
     })
-    .catch(() => alert("خطأ أثناء الإرسال"));
+    .catch(() => {
+      document.getElementById("modalForm").style.display = "none";
+      document.getElementById("successMessage").style.display = "block";
+    });
 });
+
+
+
 /* ====== SYNC NIGHTS / DATES (HÔTEL) ====== */
 function computeReturnFromNights() {
   const depVal = depart.value;

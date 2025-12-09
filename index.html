@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>قُبَـعـة للسفر - عمرة، فنادق، وتذاكر طيران</title>
+  <title>قُبَـاء للسفر - عمرة، فنادق، وتذاكر طيران</title>
 
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -27,7 +27,7 @@
           <li><a href="#tour">الخدمات</a></li>
           <li><a href="#package">باقة مميزة</a></li>
           <li><a href="#contact">تواصل</a></li>
-          <li><a href="#book">احجز الآن</a></li>
+          <li><a href="#book" onclick="document.getElementById('searchModal').style.display='flex'">احجز الآن</a></li>
         </ul>
       </div>
     </div>
@@ -160,16 +160,20 @@
   </header>
 
   <!-- باقات و محتوى (أمثلة كما سابقاً) -->
-  <section class="section__container destination__container" id="about">
-    <h2 class="section__header">باقات العمرة الأكثر طلباً</h2>
-    <p class="section__description">اختر من باقاتنا المتنوعة التي تغطي الإقامة، النقل، والدليل.</p>
+<section class="section__container destination__container" id="about">
+  <h2 class="section__header">باقات العمرة الأكثر طلباً</h2>
+  <p class="section__description">اختر من باقاتنا المتنوعة التي تغطي الإقامة، النقل، والدليل.</p>
 
-    <div class="destination__grid">
+  <div class="slider-wrapper">
+
+    <button class="arrow left" id="leftArrow">&#10095;</button>
+
+    <div class="destination__grid slider" id="omraSlider">
       <div class="destination__card">
         <img src="assets/The_Ka'ba,_Great_Mosque_of_Mecca,_Saudi_Arabia_(4).jpg" alt="الكعبة">
         <div class="destination__card__details">
           <div><h4>عمرة اقتصادية</h4><p>إقامة 3 نجوم - خطوات من الحرم</p></div>
-           <button class="omra-btn">عرض برنامج العمرة</button>
+          <button class="omra-btn">عرض برنامج العمرة</button>
           <div class="destination__rating"><span style="color:#ffd54d"><i class="ri-star-fill"></i></span>4.6</div>
         </div>
       </div>
@@ -189,8 +193,69 @@
           <div class="destination__rating"><span style="color:#ffd54d"><i class="ri-star-fill"></i></span>4.8</div>
         </div>
       </div>
+      <div class="destination__card">
+        <img src="assets/destination-3.jpg" alt="خدمة">
+        <div class="destination__card__details">
+          <div><h4>تذاكر طيران</h4><p>رحلات متنوعة إلى وجهات عالمية</p></div>
+          <div class="destination__rating"><span style="color:#ffd54d"><i class="ri-star-fill"></i></span>4.8</div>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img src="assets/destination-3.jpg" alt="خدمة">
+        <div class="destination__card__details">
+          <div><h4>تذاكر طيران</h4><p>رحلات متنوعة إلى وجهات عالمية</p></div>
+          <div class="destination__rating"><span style="color:#ffd54d"><i class="ri-star-fill"></i></span>4.8</div>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img src="assets/destination-3.jpg" alt="خدمة">
+        <div class="destination__card__details">
+          <div><h4>تذاكر طيران</h4><p>رحلات متنوعة إلى وجهات عالمية</p></div>
+          <div class="destination__rating"><span style="color:#ffd54d"><i class="ri-star-fill"></i></span>4.8</div>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img src="assets/destination-3.jpg" alt="خدمة">
+        <div class="destination__card__details">
+          <div><h4>تذاكر طيران</h4><p>رحلات متنوعة إلى وجهات عالمية</p></div>
+          <div class="destination__rating"><span style="color:#ffd54d"><i class="ri-star-fill"></i></span>4.8</div>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img src="assets/destination-3.jpg" alt="خدمة">
+        <div class="destination__card__details">
+          <div><h4>تذاكر طيران</h4><p>رحلات متنوعة إلى وجهات عالمية</p></div>
+          <div class="destination__rating"><span style="color:#ffd54d"><i class="ri-star-fill"></i></span>4.8</div>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img src="assets/destination-3.jpg" alt="خدمة">
+        <div class="destination__card__details">
+          <div><h4>تذاكر طيران</h4><p>رحلات متنوعة إلى وجهات عالمية</p></div>
+          <div class="destination__rating"><span style="color:#ffd54d"><i class="ri-star-fill"></i></span>4.8</div>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img src="assets/destination-3.jpg" alt="خدمة">
+        <div class="destination__card__details">
+          <div><h4>تذاكر طيران</h4><p>رحلات متنوعة إلى وجهات عالمية</p></div>
+          <div class="destination__rating"><span style="color:#ffd54d"><i class="ri-star-fill"></i></span>4.8</div>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img src="assets/destination-3.jpg" alt="خدمة">
+        <div class="destination__card__details">
+          <div><h4>تذاكر طيران</h4><p>رحلات متنوعة إلى وجهات عالمية</p></div>
+          <div class="destination__rating"><span style="color:#ffd54d"><i class="ri-star-fill"></i></span>4.8</div>
+        </div>
+      </div>
     </div>
-  </section>
+
+    <button class="arrow right" id="rightArrow">&#10094;</button>
+
+  </div>
+</section>
+
 
   <!-- خدمات مختصرة -->
   <section class="section__container journey__container" id="tour">
@@ -274,11 +339,11 @@
 
   <!-- Modal -->
   <div id="searchModal" class="modal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content" role="dialog" id="search" aria-modal="true" aria-labelledby="modalTitle">
       <button class="close" aria-label="اغلاق" onclick="document.getElementById('searchModal').style.display='none'">&times;</button>
       <h2 id="modalTitle">تفاصيل الطلب</h2>
 
-      <form id="modalForm" class="fields-wrapper slide-up delay-1">
+      <form id="modalForm">
         <div class="modal-grid">
           <div class="field"><label for="modalService">نوع الخدمة</label><input id="modalService" type="text" readonly></div>
           <div class="field"><label for="modalDestination">الوجهة</label><input id="modalDestination" type="text" readonly></div>
@@ -294,8 +359,14 @@
         </div>
 
         <button class="submit-btn" type="submit">إرسال الطلب</button>
+     
       </form>
+       <div id="successMessage" style="display:none; text-align:center; padding:20px;">
+      <h3 style="color:#16a34a; font-size:22px;">✔ تم إرسال طلبك بنجاح</h3>
+      <p>سنقوم بالتواصل معك قريبًا.</p>
     </div>
+    </div>
+   
   </div>
   <!-- Modal Omra -->
 <div id="omraModal" class="modal">
@@ -329,5 +400,54 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script src="main.js"></script>
+<script>
+  const slider = document.getElementById("omraSlider");
+  const leftArrow = document.getElementById("leftArrow");
+  const rightArrow = document.getElementById("rightArrow");
+
+  // --- Flèches manuelles ---
+  leftArrow.addEventListener("click", () => {
+    slider.scrollBy({ left: -350, behavior: "smooth" });
+  });
+
+  rightArrow.addEventListener("click", () => {
+    slider.scrollBy({ left: 350, behavior: "smooth" });
+  });
+
+
+  // --- AUTO SCROLL ALLER / RETOUR ---
+  let direction = -1; // on veut partir de droite → gauche
+
+  function autoScroll() {
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+    // Si on est tout à gauche → repartir à droite
+    if (slider.scrollLeft <= 0 && direction === -1) {
+      direction = -1;
+    }
+
+    // Si on est tout à droite → repartir à gauche
+    if (slider.scrollLeft >= maxScroll && direction === 1) {
+      direction = 1;
+    }
+
+    slider.scrollBy({ left: 350 * direction, behavior: "smooth" });
+  }
+
+  // ⚠️ Positionner le slider TOUT À DROITE au démarrage
+  window.addEventListener("load", () => {
+    slider.scrollLeft = slider.scrollWidth - slider.clientWidth;
+  });
+
+  // Début auto-scroll
+  setInterval(autoScroll, 2000);
+</script>
+
+
+
+
+
+
+
 </body>
 </html>
