@@ -38,7 +38,7 @@
   </nav>
 
   <!-- HEADER -->
-  <header id="home">
+  <header id="home" class="fade-in">
     <div class="header__content">
       <p>خدمات سفر متكاملة: عمرة، فنادق، وتذاكر طيران</p>
       <h1>نحن نسهّل رحلتك من التخطيط إلى العودة</h1>
@@ -169,7 +169,7 @@
         <img src="assets/The_Ka'ba,_Great_Mosque_of_Mecca,_Saudi_Arabia_(4).jpg" alt="الكعبة">
         <div class="destination__card__details">
           <div><h4>عمرة اقتصادية</h4><p>إقامة 3 نجوم - خطوات من الحرم</p></div>
-           <button id="btnOmra" class="omra-btn">عرض برنامج العمرة</button>
+           <button class="omra-btn">عرض برنامج العمرة</button>
           <div class="destination__rating"><span style="color:#ffd54d"><i class="ri-star-fill"></i></span>4.6</div>
         </div>
       </div>
@@ -266,7 +266,7 @@
 
       <div class="footer__col">
         <h4>اشترك</h4>
-        <form action="#"><input type="text" placeholder="أدخل بريدك الإلكتروني" style="padding:10px;border-radius:8px;border:1px solid #dfeeff;width:100%;margin-bottom:8px"><button class="btn" style="width:100%">اشترك</button></form>
+        <form action="#" ><input type="text" placeholder="أدخل بريدك الإلكتروني" style="padding:10px;border-radius:8px;border:1px solid #dfeeff;width:100%;margin-bottom:8px"><button class="btn" style="width:100%">اشترك</button></form>
       </div>
     </div>
     <div class="footer__bar" style="text-align:center;color:rgba(255,255,255,0.65);padding:14px 18px">جميع الحقوق محفوظة © 2024 قُبَـعـة</div>
@@ -278,7 +278,7 @@
       <button class="close" aria-label="اغلاق" onclick="document.getElementById('searchModal').style.display='none'">&times;</button>
       <h2 id="modalTitle">تفاصيل الطلب</h2>
 
-      <form id="modalForm">
+      <form id="modalForm" class="fields-wrapper slide-up delay-1">
         <div class="modal-grid">
           <div class="field"><label for="modalService">نوع الخدمة</label><input id="modalService" type="text" readonly></div>
           <div class="field"><label for="modalDestination">الوجهة</label><input id="modalDestination" type="text" readonly></div>

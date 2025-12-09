@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8" />
+<title>عروض العمرة</title>
+<style>
+body {
+  font-family: sans-serif;
+  background: #f4f4f4;
+  padding: 20px;
+  direction: rtl;
+  text-align: right;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.omra-card {
+  background: white;
+  padding: 15px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  display: flex;
+  gap: 20px;
+}
+
+.omra-card img {
+  width: 220px;
+  border-radius: 12px;
+}
+
+.omra-info h3 {
+  margin: 0 0 10px;
+}
+
+.price {
+  color: #d32f2f;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 10px 18px;
+  background: #1f7cff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>عروض العمرة المتوفرة</h2>
+
+  <div id="umraResults"></div>
+</div>
+
+<script>
+// Exemple d’offres Omra (tu peux les récupérer depuis API plus tard)
+const omraOffers = [
+  { 
+    name: "عمرة رجب",
+    price: "3490 TND",
+    img: "https://i.imgur.com/zC0CwG5.jpeg",
+    desc: "إقامة 10 أيام في مكة و5 أيام في المدينة. فندق 4 نجوم شامل نقل."
+  },
+  { 
+    name: "عمرة شعبان",
+    price: "3990 TND",
+    img: "https://i.imgur.com/vZXVZ6E.jpeg",
+    desc: "برنامج فاخر مع فندق 5 نجوم. شامل النقل والزيارات."
+  },
+  { 
+    name: "عمرة رمضان",
+    price: "5590 TND",
+    img: "https://i.imgur.com/kQoAm4l.jpeg",
+    desc: "أقرب فنادق المسجد الحرام. إقامة 14 يوم."
+  }
+];
+
+// Injecter les cartes dans la page
+let container = document.getElementById("umraResults");
+omraOffers.forEach(o => {
+  container.innerHTML += `
+    <div class="omra-card">
+      <img src="${o.img}">
+      <div class="omra-info">
+        <h3>${o.name}</h3>
+        <p>${o.desc}</p>
+        <p class="price">${o.price}</p>
+        <button class="btn">احجز الآن</button>
+      </div>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>

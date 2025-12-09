@@ -53,7 +53,8 @@ function updateServiceFields() {
     fieldFrom.style.display = "none";
     fieldTo.style.display = "none";
     fieldFlightClass.style.display = "none";
-    fieldNights.style.display = "block";
+    fieldNights.style.display = "none";
+    guestInput.style.display = "none";
     return;
   }
 
@@ -136,6 +137,10 @@ document.onclick = e => {
 /************** MODAL SEARCH **************/
 document.getElementById("searchBtn").addEventListener("click", (e) => {
   e.preventDefault();
+    if (serviceType.value === "umrah") {
+      window.location.href = "umrah-list.html";
+      return;
+  }
 
   const modal = document.getElementById("searchModal");
 
@@ -271,3 +276,28 @@ serviceType.addEventListener('change', () => {
     if (depart.value) computeReturnFromNights();
   }
 });
+const omraModal = document.getElementById("omraModal");
+const closeOmra = document.querySelector(".closeOmra");
+
+// Sélectionne TOUS les boutons dans les cartes
+const btnOmraList = document.querySelectorAll(".omra-btn");
+
+// Ouvrir le modal depuis n'importe quelle carte
+btnOmraList.forEach(btn => {
+  btn.addEventListener("click", () => {
+    omraModal.style.display = "flex";
+  });
+});
+
+// fermer modal (croix)
+closeOmra.addEventListener("click", () => {
+  omraModal.style.display = "none";
+});
+
+// fermer si clic en dehors
+window.addEventListener("click", (e) => {
+  if (e.target === omraModal) {
+    omraModal.style.display = "none";
+  }
+});
+
