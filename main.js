@@ -2,6 +2,8 @@
 emailjs.init("m4OOSl-v3Fry9GtES");
 
 /************** ELEMENTS **************/
+const fieldGuests = document.querySelector("#guestSelector").parentElement;
+
 const serviceType = document.getElementById("serviceType");
 const fieldDestination = document.getElementById("field-destination");
 const destinationSelect = document.getElementById("destinationSelect");
@@ -54,26 +56,29 @@ function updateServiceFields() {
     fieldTo.style.display = "none";
     fieldFlightClass.style.display = "none";
     fieldNights.style.display = "none";
-    guestInput.style.display = "none";
+    fieldGuests.style.display = "none";
     return;
   }
 
   // HOTEL
   if (val === "hotel") {
+      document.getElementById("searchBtn").innerHTML = "📨 إرسال الطلب";
     destinationSelect.innerHTML = `<option value="">اختر الولاية</option>`;
     tunisGovernors.forEach(g => {
       destinationSelect.innerHTML += `<option>${g}</option>`;
     });
+        fieldGuests.style.display = "block";
     return;
   }
 
   // FLIGHT
   if (val === "flight") {
+      document.getElementById("searchBtn").innerHTML = "📨 إرسال الطلب";
     destinationSelect.innerHTML = `<option value="">اختر الوجهة</option>`;
     popularCountries.forEach(c => {
       destinationSelect.innerHTML += `<option>${c}</option>`;
     });
-
+    fieldGuests.style.display = "block";
     fieldFrom.style.display = "block";
     fieldTo.style.display = "block";
     fieldFlightClass.style.display = "block";
@@ -188,8 +193,9 @@ function resetModalForm() {
 
 /************** MODAL CLOSE **************/
 const modal = document.getElementById("searchModal");
-window.onclick = e => { if (e.target === modal) modal.style.display = "none";     resetModalForm(); };
-document.onkeydown = e => { if (e.key === "Escape") modal.style.display = "none"; };
+window.onclick = e => { if (e.target === modal){modal.style.display = "none";     resetModalForm();}  };
+document.onkeydown = e => { if (e.key === "Escape") {modal.style.display = "none";  resetModalForm();  }   };
+
 
 /************** SEND EMAIL **************/
 document.getElementById("modalForm").addEventListener("submit", e => {

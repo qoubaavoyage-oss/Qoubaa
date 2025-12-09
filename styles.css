@@ -33,7 +33,7 @@
     .nav__links{display:flex;gap:18px;align-items:center}
     .nav__links a{color:var(--white);font-weight:600;padding:8px 12px;border-radius:8px}
     .nav__links a:hover{background:rgba(255,255,255,0.06);color:var(--primary)}
-    .nav__btns .btn{background:var(--primary);color:#fff;border-radius:999px;padding:10px 18px;border:none;cursor:pointer}
+    .nav__btns .btn{background:var(--primary);color:#fff;border-radius:999px;padding:10px 18px;border:none;cursor:pointer ; margin-right: 400px;}
 
     header{padding:110px 18px 40px;max-width:var(--max-width);margin-inline:auto;display:grid;grid-template-columns:1fr 480px;gap:20px;align-items:center}
     .header__content p{color:#e6f7ff;font-weight:600;margin-bottom:8px;text-align:right}
@@ -507,6 +507,88 @@ nav {
 #modalForm .field:has(#modalExtras),
 #modalForm .field:has(#modalDates) {
   display: none !important;
+}
+/* --- Wrapper --- */
+.omra-wrapper{
+  position: relative;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: 10px 16px;
+}
+
+/* --- Slider horizontal --- */
+.omra-slider{
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 8px 50px;
+}
+
+.omra-slider::-webkit-scrollbar{
+  display: none;
+}
+
+/* --- Les cartes (3 par ligne desktop) --- */
+.destination__card{
+  flex: 0 0 calc((100% - 40px) / 3);
+  min-width: calc((100% - 40px) / 3);
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* --- Responsive 2 cartes --- */
+@media (max-width: 980px){
+  .destination__card{
+    flex: 0 0 calc((100% - 20px) / 2);
+    min-width: calc((100% - 20px) / 2);
+  }
+}
+
+/* --- Responsive 1 carte mobile --- */
+@media (max-width: 600px){
+  .destination__card{
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+
+  .omra-arrow{
+    display: none;
+  }
+}
+
+/* --- Arrows --- */
+.omra-arrow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 20;
+  transition: 0.2s;
+}
+
+.omra-arrow.left{ left: 10px; }
+.omra-arrow.right{ right: 10px; }
+
+.omra-arrow:hover{
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* --- Snap to card --- */
+.omra-slider{
+  scroll-snap-type: x mandatory;
+}
+
+.destination__card{
+  scroll-snap-align: center;
 }
 
 

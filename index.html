@@ -31,10 +31,14 @@
         </ul>
       </div>
     </div>
-
+  
     <div class="nav__btns">
+      
       <button class="btn" onclick="document.getElementById('searchModal').style.display='flex'">احجز الآن</button>
     </div>
+      <a href="#home" class="nav__logo" style="display:flex;align-items:center">
+      <img src="assets/logo transparent.png" alt="شعار الوكالة" style="height:55px; cursor:pointer;">
+    </a>
   </nav>
 
   <!-- HEADER -->
@@ -164,19 +168,26 @@
   <h2 class="section__header">باقات العمرة الأكثر طلباً</h2>
   <p class="section__description">اختر من باقاتنا المتنوعة التي تغطي الإقامة، النقل، والدليل.</p>
 
-  <div class="slider-wrapper">
+<div class="omra-wrapper">
+  
+  <!-- Arrows -->
+  
+  <button class="omra-arrow right" id="rightArrow">❮</button>
 
-    <button class="arrow left" id="leftArrow">&#10095;</button>
+  <!-- Slider -->
+  <div class="omra-slider" id="omraSlider">
 
-    <div class="destination__grid slider" id="omraSlider">
-      <div class="destination__card">
-        <img src="assets/The_Ka'ba,_Great_Mosque_of_Mecca,_Saudi_Arabia_(4).jpg" alt="الكعبة">
-        <div class="destination__card__details">
-          <div><h4>عمرة اقتصادية</h4><p>إقامة 3 نجوم - خطوات من الحرم</p></div>
-          <button class="omra-btn">عرض برنامج العمرة</button>
-          <div class="destination__rating"><span style="color:#ffd54d"><i class="ri-star-fill"></i></span>4.6</div>
+    <!-- tes cards existantes -->
+    <div class="destination__card">
+      <img src="assets/The_Ka'ba,_Great_Mosque_of_Mecca,_Saudi_Arabia_(4).jpg">
+      <div class="destination__card__details">
+        <div>
+          <h4>عمرة اقتصادية</h4>
+          <p>إقامة 3 نجوم - خطوات من الحرم</p>
         </div>
+        <button class="omra-btn">عرض برنامج العمرة</button>
       </div>
+    </div>
 
       <div class="destination__card">
         <img src="assets/istanbul.webp" alt="المدينة">
@@ -251,7 +262,7 @@
       </div>
     </div>
 
-    <button class="arrow right" id="rightArrow">&#10094;</button>
+  <button class="omra-arrow left" id="leftArrow">❯</button>
 
   </div>
 </section>
@@ -401,6 +412,20 @@
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script src="main.js"></script>
 <script>
+  document.getElementById("serviceType").addEventListener("change", function () {
+    const service = this.value;
+    const guestField = document.querySelector(".guest-selector").parentElement; // whole field
+
+    if (service === "umrah") {
+        guestField.style.display = "none";  // hide guest field
+    } else {
+        guestField.style.display = "block"; // show guest field
+    }
+});
+
+// Apply rules on page load (default = umrah)
+document.getElementById("serviceType").dispatchEvent(new Event("change"));
+
   const slider = document.getElementById("omraSlider");
   const leftArrow = document.getElementById("leftArrow");
   const rightArrow = document.getElementById("rightArrow");
