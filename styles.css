@@ -371,6 +371,9 @@ nav {
 /* Cards size stays EXACTLY your style */
 .destination__card {
   min-width: 320px;
+    display: flex;
+  flex-direction: column;
+  height: 420px; /* tu peux ajuster 380–450 selon besoin */
 }
 /* ============ wrapper & layout ============ */
 .omra-wrapper{
@@ -408,19 +411,16 @@ nav {
 /* image taille fixe dans la carte */
 .omra-card img,
 .destination__card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
+  flex: 1; /* prend presque tout l'espace */
+  object-fit: contain !important;
+  
 }
 
 /* content de la carte */
 .omra-card-body,
 .destination__card__details {
-  padding: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 10px;
+  height: 70px; /* réduit l'espace texte */
 }
 
 /* ========= flèches (overlay centrées verticalement) ========= */
