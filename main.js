@@ -80,7 +80,7 @@ function updateServiceFields() {
     });
     fieldGuests.style.display = "block";
     fieldFrom.style.display = "block";
-    fieldTo.style.display = "block";
+    fieldTo.style.display = "none";
     fieldFlightClass.style.display = "block";
     fieldNights.style.display = "none";
   }
@@ -319,4 +319,5 @@ window.addEventListener("click", (e) => {
     omraModal.style.display = "none";
   }
 });
+
 

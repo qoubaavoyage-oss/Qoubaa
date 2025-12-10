@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
+   <link rel="stylesheet" href="styles.css" />
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+
 <meta charset="UTF-8" />
 <title>عروض العمرة</title>
 
@@ -33,6 +36,7 @@ body::before {
   margin: auto;
   padding: 30px;
   color: white;
+  padding-top: 120px; 
 }
 
 .container h2 {
@@ -133,26 +137,82 @@ body::before {
 </head>
 
 <body>
+<!-- NAV -->
+<nav>
+  <div style="display:flex;align-items:center;gap:16px">
+    <div class="nav__logo">
+      <img src="assets/logo qoubaa transparent.png" alt="شعار الوكالة">
+    </div>
+    <d  iv style="margin-inline-start:12px">
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html#home">الرئيسية</a></li>
+        <li><a href="index.html#about">باقات العمرة</a></li>
+        <li><a href="index.html#tour">الخدمات</a></li>
+        <li><a href="index.html#package">باقة مميزة</a></li>
+        <li><a href="index.html#contact">تواصل</a></li>
+        <li><a onclick="openModal()">احجز الآن</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="nav__btns">
+    <button class="btn" onclick="openModal()">احجز الآن</button>
+  </div>
+
+  <a href="index.html#home" class="nav__logo" style="display:flex;align-items:center">
+    <img src="assets/logo transparent.png" alt="شعار الوكالة" style="height:55px; cursor:pointer;">
+  </a>
+</nav>
 
 <div class="container">
   <h2>عروض العمرة المتوفرة</h2>
   <div id="umraResults"></div>
 </div>
+  <!-- Modal -->
+  <div id="searchModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" id="search" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close" aria-label="اغلاق" onclick="document.getElementById('searchModal').style.display='none'">&times;</button>
+      <h2 id="modalTitle">تفاصيل الطلب</h2>
 
+      <form id="modalForm">
+        <div class="modal-grid">
+          <div class="field"><label for="modalService">نوع الخدمة</label><input id="modalService" type="text" readonly></div>
+          <div class="field"><label for="modalDestination">الوجهة</label><input id="modalDestination" type="text" readonly></div>
+
+          <div class="field"><label for="nom">الاسم الكامل</label><input id="nom" type="text" required></div>
+          <div class="field"><label for="to_emailClient">البريد الإلكتروني</label><input id="to_emailClient"  ></div>
+
+          <div class="field"><label for="to_telephone">رقم الجوال</label><input id="to_telephone" type="tel" required></div>
+          <div class="field"><label for="modalDates">التواريخ</label><input id="modalDates" type="text" readonly></div>
+
+          <div class="field"><label for="modalExtras">تفاصيل إضافية</label><input id="modalExtras" type="text"></div>
+          <div class="field"><label for="modalGuests">الركاب</label><input id="modalGuests" type="text" readonly></div>
+        </div>
+
+        <button class="submit-btn" type="submit">إرسال الطلب</button>
+     
+      </form>
+       <div id="successMessage" style="display:none; text-align:center; padding:20px;">
+      <h3 style="color:#16a34a; font-size:22px;">✔ تم إرسال طلبك بنجاح</h3>
+      <p>سنقوم بالتواصل معك قريبًا.</p>
+    </div>
+    </div>
+   
+  </div>
 <script>
 /* ========= OFFRES OMRA AVEC DATES ========= */
 const omraOffers = [
   { 
     name: "عمرة رجب",
     price: "3490 TND",
-    img: "assets/chaaben.jpg",
+    img: "assets/rjab.jpg",
     desc: "إقامة 10 أيام في مكة و5 أيام في المدينة. فندق 4 نجوم شامل نقل.",
     dates: ["05 رجب", "12 رجب", "20 رجب"]
   },
   { 
     name: "عمرة شعبان",
     price: "3990 TND",
-    img: "assets/rjab.jpg",
+    img: "assets/chaaben.jpg",
     desc: "برنامج فاخر مع فندق 5 نجوم. شامل النقل والزيارات.",
     dates: ["02 شعبان", "10 شعبان", "18 شعبان", "25 شعبان"]
   },
@@ -187,6 +247,11 @@ omraOffers.forEach(o => {
     </div>
   `;
 });
+</script>
+<script>
+function openModal() {
+    document.getElementById('searchModal').style.display = 'flex';
+}
 </script>
 
 </body>
