@@ -1,6 +1,6 @@
   :root{
-      --primary:#2887ff;
-      --primary-dark:#2476da;
+      --primary:#00FF00;
+      --primary-dark:#00FF00;
       --bg-main:#001F36;
       --card-bg:#e6f0ff;
       --white:#ffffff;
@@ -82,7 +82,7 @@
     .guest-controls button{width:34px;height:34px;border-radius:8px;border:1px solid #d6e8ff;background:#fff;cursor:pointer}
 
     .done-btn{width:100%;margin-top:10px;padding:10px;background:var(--primary);color:#fff;border-radius:10px;border:none;cursor:pointer}
-    .search-btn{grid-column:1/3;background:var(--primary);color:#fff;padding:12px;border-radius:12px;border:none;font-weight:700;cursor:pointer}
+    .search-btn{grid-column:1/3;background:#00FF00;color:#fff;padding:12px;border-radius:12px;border:none;font-weight:700;cursor:pointer}
 
     /* additional fields containers (hotel/flight) */
     .service-fields{grid-column:1/3;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
@@ -145,7 +145,7 @@
     /* Modal Background */
 /* ---- Beautiful Button ---- */
 .omra-btn {
-  background: #2887ff;
+  background: #00FF00;
   color: #fff;
   padding: 12px 25px;
   border: none;
@@ -158,7 +158,7 @@
 }
 
 .omra-btn:hover {
-  background: #1a6edb;
+  background: #00FF00;
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(40,135,255,0.5);
 }
@@ -419,8 +419,10 @@ nav {
 /* content de la carte */
 .omra-card-body,
 .destination__card__details {
-  padding: 10px;
-  height: 70px; /* réduit l'espace texte */
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* ========= flèches (overlay centrées verticalement) ========= */

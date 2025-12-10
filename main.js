@@ -319,5 +319,12 @@ window.addEventListener("click", (e) => {
     omraModal.style.display = "none";
   }
 });
+// Rendre les images cliquables pour ouvrir le modal
+document.querySelectorAll(".openOmraModal").forEach(img => {
+  img.addEventListener("click", () => {
+    omraModal.style.display = "flex";
+  });
+});
+
 
 
