@@ -97,10 +97,17 @@ body::before {
   background: #ffffff;
   padding: 6px 12px;
   border-radius: 6px;
-  margin: 5px 0;
   font-size: 15px;
   color: #333;
   box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  display: inline-block; /* Important */
+  margin: 0; /* enlever margin vertical */
+}
+.dates-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap; /* pour que ça casse proprement sur mobile */
+  margin-top: 8px;
 }
 
 /* ========= BUTTON ========= */
@@ -204,32 +211,54 @@ body::before {
 const omraOffers = [
   { 
     name: "عمرة رجب",
-    price: "3490 TND",
     img: "assets/rjab.jpg",
     desc: "إقامة 10 أيام في مكة و5 أيام في المدينة. فندق 4 نجوم شامل نقل.",
-    dates: ["05 رجب", "12 رجب", "20 رجب"]
+    dates: ["05 رجب", "12 رجب", "20 رجب"],
+    rooms: {
+      A2: "3490 TND",
+      A3: "3290 TND",
+      A4: "3090 TND"
+    },
+     price: "4350 TND"
   },
   { 
     name: "عمرة شعبان",
-    price: "3990 TND",
     img: "assets/chaaben.jpg",
     desc: "برنامج فاخر مع فندق 5 نجوم. شامل النقل والزيارات.",
-    dates: ["02 شعبان", "10 شعبان", "18 شعبان", "25 شعبان"]
+    dates: ["02 شعبان", "10 شعبان", "18 شعبان", "25 شعبان"],
+    rooms: {
+      A2: "3990 TND",
+      A3: "3790 TND",
+      A4: "3590 TND"
+    },
+    price: "4350 TND"
   },
   { 
     name: "عمرة رمضان",
-    price: "5590 TND",
     img: "assets/ramadhan.jpg",
     desc: "فنادق قريبة جداً من الحرم. إقامة 14 يوم.",
-    dates: ["01 رمضان", "08 رمضان", "15 رمضان", "22 رمضان"]
+    dates: ["01 رمضان", "08 رمضان", "15 رمضان", "22 رمضان"],
+    rooms: {
+      A2: "5590 TND",
+      A3: "5390 TND",
+      A4: "5190 TND"
+    },
+    price: "5590 TND"
   }
 ];
+
 
 /* ========= INJECT HTML ========= */
 let container = document.getElementById("umraResults");
 
 omraOffers.forEach(o => {
   let datesHTML = o.dates.map(d => `<div class="date-item">📅 ${d}</div>`).join("");
+let roomsHTML = `
+  <div class="dates-title">🏨 أسعار الغرف:</div>
+  <div class="date-item">A2 (مزدوجة): ${o.rooms.A2}</div>
+  <div class="date-item">A3 (ثلاثية): ${o.rooms.A3}</div>
+  <div class="date-item">A4 (رباعية): ${o.rooms.A4}</div>
+`;
 
   container.innerHTML += `
     <div class="omra-card">
@@ -239,9 +268,10 @@ omraOffers.forEach(o => {
         <p class="desc">${o.desc}</p>
 
         <div class="dates-title">🗓 مواعيد الانطلاق:</div>
-        ${datesHTML}
+       <div class="dates-row">${datesHTML}</div>
 
         <p class="price">السعر: ${o.price}</p>
+          ${roomsHTML}
         <button class="btn">احجز الآن</button>
       </div>
     </div>
