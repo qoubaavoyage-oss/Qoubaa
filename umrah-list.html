@@ -128,6 +128,116 @@ body::before {
   transform: scale(1.05);
   background: linear-gradient(45deg, #0040d0, #0088ee);
 }
+.date-box {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  width: 100%;
+}
+
+.date-header {
+  font-weight: bold;
+  color: #1a237e;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.price-col {
+  background: #f1f5f9;
+  padding: 8px;
+  border-radius: 8px;
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+}
+.date-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+  font-size: 15px;
+  color: #333;
+}
+
+.price-btn {
+  background: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.price-pop {
+  display: none;
+  position: absolute;
+  background: white;
+  padding: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  margin-top: 5px;
+  z-index: 50;
+  font-size: 14px;
+}
+
+.price-pop div {
+  margin-bottom: 4px;
+}
+.dates-column {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.date-box {
+  background: #ffffff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-btn {
+  background: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 3px 8px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.price-pop {
+  display: none;
+  position: absolute;
+  background: white;
+  padding: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  margin-top: 5px;
+  z-index: 50;
+  font-size: 14px;
+}
+
 
 /* ========= MOBILE ========= */
 @media (max-width: 700px) {
@@ -209,42 +319,56 @@ body::before {
 <script>
 /* ========= OFFRES OMRA AVEC DATES ========= */
 const omraOffers = [
-  { 
-    name: "عمرة رجب",
-    img: "assets/rjab.jpg",
-    desc: "إقامة 10 أيام في مكة و5 أيام في المدينة. فندق 4 نجوم شامل نقل.",
-    dates: ["05 رجب", "12 رجب", "20 رجب"],
-    rooms: {
-      A2: "3490 TND",
-      A3: "3290 TND",
-      A4: "3090 TND"
-    },
-     price: "4350 TND"
-  },
-  { 
-    name: "عمرة شعبان",
-    img: "assets/chaaben.jpg",
-    desc: "برنامج فاخر مع فندق 5 نجوم. شامل النقل والزيارات.",
-    dates: ["02 شعبان", "10 شعبان", "18 شعبان", "25 شعبان"],
-    rooms: {
-      A2: "3990 TND",
-      A3: "3790 TND",
-      A4: "3590 TND"
-    },
-    price: "4350 TND"
-  },
-  { 
-    name: "عمرة رمضان",
-    img: "assets/ramadhan.jpg",
-    desc: "فنادق قريبة جداً من الحرم. إقامة 14 يوم.",
-    dates: ["01 رمضان", "08 رمضان", "15 رمضان", "22 رمضان"],
-    rooms: {
-      A2: "5590 TND",
-      A3: "5390 TND",
-      A4: "5190 TND"
-    },
-    price: "5590 TND"
-  }
+ {
+  name: "عمرة رجب",
+  img: "assets/rjab.jpg",
+  desc: "إقامة 10 أيام في مكة و5 أيام في المدينة. فندق 4 نجوم شامل نقل.",
+
+  dates: [
+    { date: "30 ديسمبر", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
+    { date: "01 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
+    { date: "03 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
+    { date: "06 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
+    { date: "08 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
+    { date: "10 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
+    { date: "13 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
+    { date: "15 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
+    { date: "17 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } }
+  ],
+
+  // Peut être supprimé, mais tu peux le garder pour affichage général
+  price: "4350 TND"
+}
+
+,
+ {
+  name: "عمرة شعبان",
+  img: "assets/chaaben.jpg",
+  desc: "برنامج فاخر مع فندق 5 نجوم. شامل النقل والزيارات.",
+
+  dates: [
+    { date: "20 جانفي", rooms: { A2: 5150, A3: 4700, A4: 4350 }},
+    { date: "22 جانفي", rooms: { A2: 5150, A3: 4700, A4: 4350 }},
+    { date: "24 جانفي", rooms: { A2: 5150, A3: 4700, A4: 4350 }},
+    { date: "27 جانفي", rooms: { A2: 5150, A3: 4700, A4: 4350 }},
+    { date: "29 جانفي", rooms: { A2: 5150, A3: 4700, A4: 4350 }},
+
+    { date: "31 جانفي", rooms: { A2: 4500, A3: 4200, A4: 3900 }},
+
+    { date: "03 فيفري", rooms: { A2: 5150, A3: 4700, A4: 4350 }},
+    { date: "05 فيفري", rooms: { A2: 5450, A3: 4950, A4: 4500 }},
+    { date: "07 فيفري", rooms: { A2: 5750, A3: 5100, A4: 4650 }},
+    { date: "10 فيفري", rooms: { A2: 6150, A3: 5300, A4: 4850 }},
+    { date: "12 فيفري", rooms: { A2: 6450, A3: 5550, A4: 5050 }},
+    { date: "14 فيفري", rooms: { A2: 7050, A3: 5950, A4: 5350 }},
+    { date: "16 فيفري", rooms: { A2: 7150, A3: 6050, A4: 5450 }},
+    { date: "17 فيفري", rooms: { A2: 7100, A3: 6100, A4: 5500 }},
+    { date: "18 فيفري", rooms: { A2: 11000, A3: 9500, A4: 8500 }}
+  ],
+
+  price: null // لم نعد نحتاج "السعر العام" لأن كل تاريخ عنده سعر مستقل
+}
+
 ];
 
 
@@ -252,13 +376,25 @@ const omraOffers = [
 let container = document.getElementById("umraResults");
 
 omraOffers.forEach(o => {
-  let datesHTML = o.dates.map(d => `<div class="date-item">📅 ${d}</div>`).join("");
-let roomsHTML = `
-  <div class="dates-title">🏨 أسعار الغرف:</div>
-  <div class="date-item">A2 (مزدوجة): ${o.rooms.A2}</div>
-  <div class="date-item">A3 (ثلاثية): ${o.rooms.A3}</div>
-  <div class="date-item">A4 (رباعية): ${o.rooms.A4}</div>
-`;
+  let datesHTML = o.dates.map((d, index) => {
+    let id = `${o.name.replace(/\s+/g,'')}_${index}`;
+
+    return `
+      <div class="date-row">
+        <span>📅 ${d.date}</span>
+
+        <button class="price-btn" onclick="togglePrice('${id}')">
+          عرض الأسعار
+        </button>
+
+        <div class="price-pop" id="${id}">
+          <div>A2: ${d.rooms.A2} TND</div>
+          <div>A3: ${d.rooms.A3} TND</div>
+          <div>A4: ${d.rooms.A4} TND</div>
+        </div>
+      </div>
+    `;
+  }).join("");
 
   container.innerHTML += `
     <div class="omra-card">
@@ -268,15 +404,20 @@ let roomsHTML = `
         <p class="desc">${o.desc}</p>
 
         <div class="dates-title">🗓 مواعيد الانطلاق:</div>
-       <div class="dates-row">${datesHTML}</div>
+        <div class="dates-column">${datesHTML}</div>
 
-        <p class="price">السعر: ${o.price}</p>
-          ${roomsHTML}
         <button class="btn">احجز الآن</button>
       </div>
     </div>
   `;
 });
+
+function togglePrice(id) {
+  const popup = document.getElementById(id);
+  popup.style.display = popup.style.display === "block" ? "none" : "block";
+}
+
+
 </script>
 <script>
 function openModal() {
