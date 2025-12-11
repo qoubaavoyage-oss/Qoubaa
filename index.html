@@ -23,7 +23,7 @@
       <div style="margin-inline-start:12px">
         <ul class="nav__links" id="nav-links">
           <li><a href="#home">الرئيسية</a></li>
-          <li><a href="#about">باقات العمرة</a></li>
+          <li><a onclick="location.href='umrah-list.html'" >باقات العمرة</a></li>
           <li><a href="#tour">الخدمات</a></li>
           <li><a href="#package">باقة مميزة</a></li>
           <li><a href="#contact">تواصل</a></li>
@@ -230,24 +230,51 @@
 
 
   <!-- خدمات مختصرة -->
-  <section class="section__container journey__container" id="tour">
-    <h2 class="section__header">خدماتنا</h2>
-    <p class="section__description">نقدم خدمات متكاملة للعمرة، حجز الفنادق، وحجز التذاكر.</p>
-    <div class="journey__grid">
-      <div class="journey__card">
-        <div class="journey__card__bg"><h4>استخراج التأشيرات</h4></div>
-        <div class="journey__card__content"><h4>إجراءات سريعة</h4><p>مساعدة كاملة في استخراج التأشيرات الضرورية.</p></div>
+<section class="section__container journey__container" id="tour">
+  <h2 class="section__header">خدماتنا</h2>
+  <p class="section__description">نقدم خدمات احترافية ومتكاملة لتسهيل رحلتك إلى بيت الله الحرام.</p>
+
+  <div class="journey__grid">
+
+    <!-- VISA -->
+    <div class="journey__card">
+      <div class="icon-circle">
+        <i class="ri-passport-fill"></i>
       </div>
-      <div class="journey__card">
-        <div class="journey__card__bg"><h4>حجوزات الفنادق</h4></div>
-        <div class="journey__card__content"><h4>اختيارات متعددة</h4><p>فنادق لجميع المستويات القريبة من الحرم.</p></div>
-      </div>
-      <div class="journey__card">
-        <div class="journey__card__bg"><h4>تذاكر الطيران</h4></div>
-        <div class="journey__card__content"><h4>رحلات مريحة</h4><p>خيارات مرنة لرحلات الذهاب والعودة.</p></div>
-      </div>
+      <h4>استخراج التأشيرات</h4>
+      <p>نقوم بإتمام جميع الإجراءات بسرعة وكفاءة، وتوفير دعم كامل حتى استلام التأشيرة.</p>
     </div>
-  </section>
+
+    <!-- HOTELS -->
+    <div class="journey__card">
+      <div class="icon-circle">
+        <i class="ri-hotel-line"></i>
+      </div>
+      <h4>حجوزات الفنادق</h4>
+      <p>نوفر باقات فندقية متنوعة تشمل أفضل الفنادق القريبة من الحرم بأسعار تنافسية.</p>
+    </div>
+
+    <!-- FLIGHTS -->
+    <div class="journey__card">
+      <div class="icon-circle">
+        <i class="ri-flight-takeoff-line"></i>
+      </div>
+      <h4>تذاكر الطيران</h4>
+      <p>تنظيم شامل لحجوزات الطيران مع خيارات متعددة لتناسب ميزانيتك ومواعيدك.</p>
+    </div>
+
+    <!-- GUIDANCE -->
+    <div class="journey__card">
+      <div class="icon-circle">
+        <i class="ri-map-pin-user-line"></i>
+      </div>
+      <h4>مرافقة وتوجيه</h4>
+      <p>مرشدون ذوو خبرة عالية لتقديم المساعدة طوال الرحلة داخل مكة والمدينة.</p>
+    </div>
+
+  </div>
+</section>
+
 
   <!-- showcase -->
   <section class="section__container showcase__container" id="package">
@@ -268,46 +295,137 @@
 
   <!-- عملاء -->
   <section class="section__container client__container">
-    <h2 class="section__header">تجارب معتمرين</h2>
-    <p class="section__description">آراء من زبائننا حول خدمات العمرة والفنادق.</p>
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="client__card">
-            <div class="client__content"><div class="client__rating">★★★★★</div><p>تنظيم ممتاز ومتابعة من البداية للنهاية.</p></div>
-            <div class="client__details"><img src="assets/client-1.jpg" alt="عميل"><div><h4>عميل</h4><h5>معتمر</h5></div></div>
+  <h2 class="section__header">تجارب معتمرين</h2>
+  <p class="section__description">آراء حقيقية من معتمرين اختاروا وكالة قباء للأسفار لأداء مناسك العمرة بكل راحة وطمأنينة.</p>
+
+  <div class="swiper">
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="client__card">
+          <div class="client__content">
+            <div class="client__rating">★★★★★</div>
+            <p>
+              رحلة منظمة بكل تفاصيلها، من الاستقبال إلى العودة. الفنادق كانت قريبة جداً من الحرم
+              والمرشد كان متعاوناً بشكل رائع. أنصح الجميع بالتعامل مع وكالة قباء للأسفار.
+            </p>
+          </div>
+          <div class="client__details">
+            <img src="assets/client-1.jpg" alt="client">
+            <div>
+              <h4>محمّد القروي</h4>
+              <h5>معتمر</h5>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="client__card">
+          <div class="client__content">
+            <div class="client__rating">★★★★★</div>
+            <p>
+              هذه أفضل تجربة عمرة قمت بها. احترام في المواعيد، نقل مريح، وفريق يتابعك خطوة بخطوة.
+              شكراً قباء على المصداقية والخدمة الممتازة.
+            </p>
+          </div>
+          <div class="client__details">
+            <img src="assets/client-2.jpg" alt="client">
+            <div>
+              <h4>أمينة بن عثمان</h4>
+              <h5>معتمرة</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+        <div class="client__card">
+          <div class="client__content">
+            <div class="client__rating">★★★★★</div>
+            <p>
+              الحقيقة فريق محترف جداً. التواصل سريع، والأسعار ممتازة مقارنة بالخدمة.
+              الفندق في مكة كان قريباً جداً مما سهّل علينا كل شيء.
+            </p>
+          </div>
+          <div class="client__details">
+            <img src="assets/client-3.jpg" alt="client">
+            <div>
+              <h4>إلياس عمري</h4>
+              <h5>معتمر</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Footer -->
-  <footer id="contact">
-    <div class="section__container footer__container">
-      <div class="footer__col">
-        <div class="footer__logo"><a href="#" class="logo" style="color:var(--white);font-weight:800;font-size:18px">قُبَـعـة</a></div>
-        <p style="color:rgba(255,255,255,0.8)">وكالة متخصّصة بتنظيم رحلات العمرة وحجوزات الفنادق وتذاكر الطيران.</p>
-        <ul class="footer__socials" style="display:flex;gap:10px;margin-top:12px"><li><a href="#" style="color:var(--white)"><i class="ri-facebook-fill"></i></a></li><li><a href="#" style="color:var(--white)"><i class="ri-instagram-line"></i></a></li></ul>
-      </div>
+  <footer id="contact" class="footer">
+  <div class="section__container footer__container">
 
-      <div class="footer__col">
-        <h4>روابط سريعة</h4>
-        <ul class="footer__links"><li><a href="#home">الرئيسية</a></li><li><a href="#about">باقات العمرة</a></li><li><a href="#tour">الخدمات</a></li><li><a href="#contact">تواصل</a></li></ul>
-      </div>
+    <!-- Logo + Description -->
+    <div class="footer__col">
+      <h2 class="footer__logo">قُبَـاء للسفر</h2>
+      <p>وكالة مختصّة في تنظيم رحلات العمرة، حجوزات الفنادق، وتذاكر الطيران.</p>
 
-      <div class="footer__col">
-        <h4>تواصل معنا</h4>
-        <ul class="footer__links"><li><a href="#"><span><i class="ri-phone-fill"></i></span> +216 55 524 355</a></li><li><a href="#"><span><i class="ri-record-mail-line"></i></span> info@qoubaa.com</a></li><li><a href="#"><span><i class="ri-map-pin-2-fill"></i></span> مكة المكرمة</a></li></ul>
-      </div>
-
-      <div class="footer__col">
-        <h4>اشترك</h4>
-        <form action="#" ><input type="text" placeholder="أدخل بريدك الإلكتروني" style="padding:10px;border-radius:8px;border:1px solid #dfeeff;width:100%;margin-bottom:8px"><button class="btn" style="width:100%">اشترك</button></form>
+      <div class="footer__socials">
+        <a href="https://www.facebook.com/profile.php?id=61566876269500" target="_blank">
+          <i class="ri-facebook-fill"></i>
+        </a>
+        <a href="https://www.instagram.com/qoubaavoyage/" target="_blank">
+          <i class="ri-instagram-line"></i>
+        </a>
+        <a href="https://www.tiktok.com/@qoubaavoyage" target="_blank">
+          <i class="ri-tiktok-fill"></i>
+        </a>
+        <a href="https://wa.me/21655524355" target="_blank">
+          <i class="ri-whatsapp-fill"></i>
+        </a>
       </div>
     </div>
-    <div class="footer__bar" style="text-align:center;color:rgba(255,255,255,0.65);padding:14px 18px">جميع الحقوق محفوظة 2024 قباء</div>
-  </footer>
+
+    <!-- Links -->
+    <div class="footer__col">
+      <h4>روابط سريعة</h4>
+      <ul>
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#about">باقات العمرة</a></li>
+        <li><a href="#tour">الخدمات</a></li>
+        <li><a href="#contact">تواصل</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer__col">
+      <h4>تواصل معنا</h4>
+      <ul>
+        <li><i class="ri-phone-fill"></i> +216 55 524 355</li>
+        <li><i class="ri-mail-line"></i> qoubaavoyage@gmail.com</li>
+        <li><i class="ri-map-pin-2-fill"></i>الحامة شارع الحبيب بورقيبة عمارة بوشلاكة</li>
+      </ul>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="footer__col">
+      <h4>النشرة البريدية</h4>
+      <form>
+        <input type="email" placeholder="أدخل بريدك الإلكتروني">
+        <button class="btn">اشتراك</button>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="footer__bar">© جميع الحقوق محفوظة 2024 — وكالة قُبَـاء للأسفار</div>
+</footer>
+
 
   <!-- Modal -->
   <div id="searchModal" class="modal" aria-hidden="true">
@@ -371,6 +489,20 @@
   <script src="https://unpkg.com/scrollreveal"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<script>
+  new Swiper('.swiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: { delay: 3000 },
+    breakpoints: {
+      780: { slidesPerView: 2 },
+      1100: { slidesPerView: 3 }
+    }
+  });
+</script>
   <script src="main.js"></script>
 <script>
   document.getElementById("serviceType").addEventListener("change", function () {
