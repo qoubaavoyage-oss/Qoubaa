@@ -822,18 +822,23 @@ nav {
   justify-content: center;
 }
 .topbar {
-  background-color: #022230;
+background-color: #022230;
   padding: 8px 18px;
-  position: fixed;       /* حتى يبقى فوق */
+  position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  z-index: 9999;        /* أعلى من الناف */
+  z-index: 9999;       /* أعلى من الناف */
 }
 nav {
-  margin-top: 50px;     /* نزّل الناف للأسفل */
-  z-index: 9000;        /* أقل من التوب بار */
+  position: fixed;
+  top: 45px;        /* ارتفاع التوب بار */
+  width: 100%;
+  z-index: 9990;     /* أقل من التوب بار */
 }
+body {
+  padding-top: 120px;   /* 45px topbar + 75px navbar تقريبًا */
+}
+
 .topbar__content {
   display: flex;
   justify-content: space-between;
@@ -859,7 +864,7 @@ nav {
 
 .topbar__icon {
   background: #fff;
-  color: #00FF00;  /* orange style الصورة */
+  color: #2887ff;  /* orange style الصورة */
   width: 34px;
   height: 34px;
   display: flex;
@@ -891,7 +896,7 @@ nav {
 
 .topbar__socials a:hover {
   background: #fff;
-  color: #00FF00;
+  color: #2887ff;
 }
 
 
