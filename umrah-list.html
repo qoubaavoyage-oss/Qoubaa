@@ -406,7 +406,7 @@ omraOffers.forEach(o => {
         <div class="dates-title">🗓 مواعيد الانطلاق:</div>
         <div class="dates-column">${datesHTML}</div>
 
-        <button class="btn">احجز الآن</button>
+        <button class="btn openReservation">احجز الآن</button>
       </div>
     </div>
   `;
@@ -423,6 +423,11 @@ function togglePrice(id) {
 function openModal() {
     document.getElementById('searchModal').style.display = 'flex';
 }
+document.querySelectorAll(".openReservation").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.getElementById("searchModal").style.display = "flex";
+  });
+});
 </script>
 
 </body>
