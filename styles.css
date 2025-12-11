@@ -821,6 +821,79 @@ nav {
   align-items: center;
   justify-content: center;
 }
+.topbar {
+  background-color: #022230;
+  padding: 8px 18px;
+  position: fixed;       /* حتى يبقى فوق */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;        /* أعلى من الناف */
+}
+nav {
+  margin-top: 50px;     /* نزّل الناف للأسفل */
+  z-index: 9000;        /* أقل من التوب بار */
+}
+.topbar__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  color: white;
+  direction: rtl;
+}
+
+.topbar__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.topbar__item a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.topbar__icon {
+  background: #fff;
+  color: #00FF00;  /* orange style الصورة */
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.topbar__socials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar__socials a {
+  width: 34px;
+  height: 34px;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.topbar__socials a:hover {
+  background: #fff;
+  color: #00FF00;
+}
+
 
 
 
