@@ -80,14 +80,41 @@
         <div class="search-form" aria-label="نموذج البحث">
           <div class="fields-wrapper">
             <!-- Service type -->
-            <div class="field search-service">
-              <label for="serviceType">نوع الخدمة</label>
-              <select id="serviceType">
-                <option value="umrah">العمرة</option>
-                <option value="hotel">حجز فندق</option>
-                <option value="flight">حجز تذكرة طيران</option>
-              </select>
-            </div>
+    <div class="field search-service">
+
+  <!-- SWITCHER BUTTONS -->
+  <div class="service-switcher">
+    
+    <button class="service-btn active" data-value="umrah">
+      <img src="assets/icone kaaba.png" alt="umrah">
+      العمرة
+      <span class="underline"></span>
+    </button>
+
+    <button class="service-btn" data-value="hotel">
+      <img src="assets/hotel.png" alt="">
+      حجز فندق
+      <span class="underline"></span>
+    </button>
+
+    <button class="service-btn" data-value="flight">
+      <img src="assets/avion (1).png" alt=""> 
+      تذكرة طيران
+      <span class="underline"></span>
+    </button>
+
+  </div>
+
+  <!-- SELECT مخفي لأن JS يحتاجه -->
+  <select id="serviceType" style="display:none">
+    <option value="umrah">العمرة</option>
+    <option value="hotel">حجز فندق</option>
+    <option value="flight">حجز تذكرة طيران</option>
+  </select>
+
+</div>
+
+
 
             <!-- Destination / city / to -->
         <div class="field" id="field-destination">
@@ -627,6 +654,31 @@ document.getElementById("serviceType").dispatchEvent(new Event("change"));
   setInterval(autoScroll, 2000);
 </script>
 
+<script>
+let slides = document.querySelectorAll(".header-slider .slide");
+let index = 0;
+
+function showSlide(i) {
+  slides.forEach(s => s.classList.remove("active"));
+  slides[i].classList.add("active");
+}
+
+document.getElementById("nextSlide").onclick = () => {
+  index = (index + 1) % slides.length;
+  showSlide(index);
+};
+
+document.getElementById("prevSlide").onclick = () => {
+  index = (index - 1 + slides.length) % slides.length;
+  showSlide(index);
+};
+
+// Auto play
+setInterval(() => {
+  index = (index + 1) % slides.length;
+  showSlide(index);
+}, 5000);
+</script>
 
 
 

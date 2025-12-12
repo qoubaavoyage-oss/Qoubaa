@@ -86,6 +86,23 @@ function updateServiceFields() {
   }
 }
 serviceType.addEventListener("change", updateServiceFields);
+const serviceButtons = document.querySelectorAll(".service-btn");
+
+serviceButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    // إزالة active القديم
+    serviceButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    // وضع القيمة داخل select المخفي
+    serviceType.value = btn.dataset.value;
+
+    // تشغيل وظيفة تحديث الحقول
+    updateServiceFields();
+  });
+});
+
 updateServiceFields();
 
 /************** DATE RULES **************/
