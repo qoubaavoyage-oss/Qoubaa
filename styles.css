@@ -1021,8 +1021,13 @@ nav > a.nav__logo {
   /* make navbar go under topbar properly */
   nav {
     flex-direction: row;
-    padding: 10px 14px;
+
     margin-top: 0;
+      position: fixed;
+    top: 170px;
+    width: 100%;
+    z-index: 9990;
+          
   }
 
   /* logo smaller */
@@ -1050,9 +1055,11 @@ nav > a.nav__logo {
 
   /* show hamburger */
   .hamburger {
-    display: block;
-    font-size: 30px;
+     display: block;
+    font-size: 32px;
     cursor: pointer;
+    margin-inline-start: auto;
+
   }
 
   /* hide desktop button */
@@ -1061,9 +1068,11 @@ nav > a.nav__logo {
   }
 }
 
-/* hamburger hidden on desktop */
+/* hide hamburger on desktop */
 .hamburger {
   display: none;
 }
+
+
 
 
