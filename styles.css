@@ -971,5 +971,99 @@ body {
 .service-btn.active {
   color: #2887ff;
 }
+/* ---------------------------
+   📱 جعل الـ TOPBAR Responsive
+----------------------------*/
+.topbar {
+  background: #001d2d;
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 8px;
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    padding: 4px 6px;
+  }
+
+  .topbar__content {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .topbar__item,
+  .topbar__socials {
+    justify-content: center;
+  }
+}
+
+/* ---------------------------
+   📱 إصلاح الـ NAVBAR في الموبايل
+----------------------------*/
+
+/* nav container */
+
+
+/* hide duplicated logo */
+nav > a.nav__logo {
+  display: none;
+}
+
+/* desktop menu */
+.nav__links {
+  display: flex;
+  gap: 20px;
+}
+
+/* mobile adjustments */
+@media (max-width: 768px) {
+  /* make navbar go under topbar properly */
+  nav {
+    flex-direction: row;
+    padding: 10px 14px;
+    margin-top: 0;
+  }
+
+  /* logo smaller */
+  .nav__logo img {
+    height: 45px;
+  }
+
+  /* hide links on small screen */
+  .nav__links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 62px; /* under navbar */
+    right: 0;
+    width: 100%;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+
+  /* SHOW MENU when nav-open class is added */
+  .nav__links.open {
+    display: flex;
+  }
+
+  /* show hamburger */
+  .hamburger {
+    display: block;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  /* hide desktop button */
+  .nav__btns {
+    display: none;
+  }
+}
+
+/* hamburger hidden on desktop */
+.hamburger {
+  display: none;
+}
 
 

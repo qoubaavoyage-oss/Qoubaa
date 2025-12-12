@@ -44,6 +44,7 @@
 </div>
 
   <nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
     <div style="display:flex;align-items:center;gap:16px">
       <div class="nav__logo">
         <img src="assets/logo qoubaa transparent.png" alt="شعار الوكالة" >
@@ -633,8 +634,8 @@ document.getElementById("serviceType").dispatchEvent(new Event("change"));
     const maxScroll = slider.scrollWidth - slider.clientWidth;
 
     // Si on est tout à gauche → repartir à droite
-    if (slider.scrollLeft <= 0 && direction === -1) {
-      direction = -1;
+    // if (slider.scrollLeft <= 0 && direction === -1) {
+     //  direction = -1;
     }
 
     // Si on est tout à droite → repartir à gauche
@@ -678,6 +679,11 @@ setInterval(() => {
   index = (index + 1) % slides.length;
   showSlide(index);
 }, 5000);
+</script>
+<script>
+function toggleMenu() {
+  document.getElementById("nav-links").classList.toggle("open");
+}
 </script>
 
 
