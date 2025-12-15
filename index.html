@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>قُبَـاء للسفر - عمرة، فنادق، وتذاكر طيران</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+ <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
   <style>
   
@@ -50,6 +53,7 @@
 <div id="mobileMenu" class="mobile-menu">
   <a href="#home">الرئيسية</a>
   <a href="umrah-list.html">باقات العمرة</a>
+  <li><a href="bus.html">كراء حافلات</a></li>
   <a href="#tour">الخدمات</a>
   <a href="#package">باقة مميزة</a>
   <a href="#contact">تواصل</a>
@@ -59,18 +63,12 @@
   <nav>
 
     <div style="display:flex;align-items:center;gap:16px">
-        
-      <div class="nav__logo">
-
-        <img src="assets/logo qoubaa transparent.png" alt="شعار الوكالة" >
-                
-      </div>
+      
      
       <div style="margin-inline-start:12px">
         <ul class="nav__links" id="nav-links">
           <li><a href="#home">الرئيسية</a></li>
           <li><a onclick="location.href='umrah-list.html'" >باقات العمرة</a></li>
-            <li><a href="bus.html">كراء حافلات</a></li>
           <li><a href="#tour">الخدمات</a></li>
           <li><a href="#package">باقة مميزة</a></li>
           <li><a href="#contact">تواصل</a></li>
@@ -744,31 +742,6 @@ document.getElementById("serviceType").dispatchEvent(new Event("change"));
   setInterval(autoScroll, 2000);
 </script>
 
-<script>
-let slides = document.querySelectorAll(".header-slider .slide");
-let index = 0;
-
-function showSlide(i) {
-  slides.forEach(s => s.classList.remove("active"));
-  slides[i].classList.add("active");
-}
-
-document.getElementById("nextSlide").onclick = () => {
-  index = (index + 1) % slides.length;
-  showSlide(index);
-};
-
-document.getElementById("prevSlide").onclick = () => {
-  index = (index - 1 + slides.length) % slides.length;
-  showSlide(index);
-};
-
-// Auto play
-setInterval(() => {
-  index = (index + 1) % slides.length;
-  showSlide(index);
-}, 5000);
-</script>
 <script>
 function toggleMenu() {
   const menu = document.getElementById('mobileMenu');

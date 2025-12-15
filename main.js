@@ -51,13 +51,15 @@ function updateServiceFields() {
 
   // OMRA
   if (val === "umrah") {
-    fieldDestination.style.display = "none";
-    fieldFrom.style.display = "none";
-    fieldTo.style.display = "none";
-    fieldFlightClass.style.display = "none";
-    fieldNights.style.display = "none";
-    fieldGuests.style.display = "none";
-    return;
+ fieldDestination.style.display = "none";
+  fieldFrom.style.display = "none";
+  fieldTo.style.display = "none";
+  fieldFlightClass.style.display = "none";
+  fieldNights.style.display = "none";
+  fieldGuests.style.display = "none";
+
+  document.querySelector(".fields-wrapper").classList.add("omra-mode");
+  return;
   }
 
   // HOTEL
@@ -171,12 +173,16 @@ document.getElementById("searchBtn").addEventListener("click", (e) => {
 
   let destText = "";
 
-  if (serviceType.value === "flight") {
-    destText =
-      (document.getElementById("flightFrom").value || "---") +
-      " → " +
-      (document.getElementById("flightTo").value || "---");
-  } else {
+ if (serviceType.value === "flight") {
+  const fromEl = document.getElementById("flightFrom");
+  const toEl = document.getElementById("flightTo");
+
+  const fromVal = fromEl ? fromEl.value : "---";
+  const toVal = toEl ? toEl.value : "---";
+
+  destText = fromVal + " → " + toVal;
+}
+ else {
     destText = destinationSelect.value || "";
   }
 
@@ -191,8 +197,10 @@ document.getElementById("searchBtn").addEventListener("click", (e) => {
   let extras = "";
   if (serviceType.value === "hotel")
     extras = "ليالي: " + (document.getElementById("nights").value || "1");
-  if (serviceType.value === "flight")
-    extras = "درجة: " + document.getElementById("flightClass").value;
+if (serviceType.value === "flight") {
+  const flightClassEl = document.getElementById("flightClass");
+  extras = "درجة: " + (flightClassEl ? flightClassEl.value : "");
+}
 
   document.getElementById("modalExtras").value = extras;
 
