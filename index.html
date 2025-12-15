@@ -18,7 +18,10 @@
    <!-- 🔵 Top Bar -->
 <div class="topbar">
   <div class="topbar__content">
-
+  <!-- ✅ LOGO MOBILE -->
+    <div class="topbar__logo">
+     <img src="assets/logo transparent.png" alt="شعار الوكالة" style="height:55px; cursor:pointer;">
+    </div>
     <div class="topbar__item">
       <span class="topbar__icon"><i class="ri-time-fill"></i></span>
       <span>ساعات العمل: يوميًا من 8:00 صباحًا إلى 18:00</span>
@@ -39,14 +42,24 @@
       <a href="https://www.instagram.com/qoubaavoyage/" target="_blank"><i class="ri-instagram-line"></i></a>
       <a href="https://www.tiktok.com/@qoubaavoyage" target="_blank"><i class="ri-tiktok-fill"></i></a>
     </div>
+<div class="hamburger" onclick="toggleMenu()">☰</div>
 
   </div>
+</div>
+<!-- 📱 Mobile Menu -->
+<div id="mobileMenu" class="mobile-menu">
+  <a href="#home">الرئيسية</a>
+  <a href="umrah-list.html">باقات العمرة</a>
+  <a href="#tour">الخدمات</a>
+  <a href="#package">باقة مميزة</a>
+  <a href="#contact">تواصل</a>
+  <a href="#book">احجز الآن</a>
 </div>
 
   <nav>
 
     <div style="display:flex;align-items:center;gap:16px">
-         <div class="hamburger" onclick="toggleMenu()">☰</div>
+        
       <div class="nav__logo">
 
         <img src="assets/logo qoubaa transparent.png" alt="شعار الوكالة" >
@@ -57,6 +70,7 @@
         <ul class="nav__links" id="nav-links">
           <li><a href="#home">الرئيسية</a></li>
           <li><a onclick="location.href='umrah-list.html'" >باقات العمرة</a></li>
+            <li><a href="bus.html">كراء حافلات</a></li>
           <li><a href="#tour">الخدمات</a></li>
           <li><a href="#package">باقة مميزة</a></li>
           <li><a href="#contact">تواصل</a></li>
@@ -257,7 +271,7 @@
 
     <!-- tes cards existantes -->
     <div class="destination__card" >
-      <img src="assets/omra 35 J.png" class="openOmraModal"  >
+      <img src="assets/omraromdhane.png" class="openOmraModal"  >
       <div class="destination__card__details">
         <div>
           <h4>عمرة رمضان</h4>
@@ -268,9 +282,60 @@
     </div>
 
       <div class="destination__card">
-        <img src="assets/gg.jpg" class="openOmraModal" >
+        <img src="assets/rjab.png" class="openOmraModal" >
         <div class="destination__card__details">
-          <div><h4>حجز فندق مريح</h4><p>فنادق قرب الحرم ومرافق مميزة</p></div>
+          <div><h4>عمرة رجب</h4><p>فنادق قرب الحرم ومرافق مميزة</p></div>
+            <button class="omra-btn" onclick="location.href='umrah-list.html'" >أكثر تفاصيل </button>
+        </div>
+      </div>
+      
+      <div class="destination__card">
+        <img src="assets/chaabeen.png" class="openOmraModal" >
+        <div class="destination__card__details">
+          <div><h4>عمرة شعبان </h4> <p></p> <p>فنادق قرب الحرم ومرافق مميزة</p></div>
+            <button class="omra-btn" onclick="location.href='umrah-list.html'" >أكثر تفاصيل </button>
+        </div>
+      </div>
+
+         
+    
+    </div>
+
+  <button class="omra-arrow left" id="leftArrow">❯</button>
+
+  </div>
+</section>
+
+  <!-- باقات و محتوى (أمثلة كما سابقاً) -->
+<section class="section__container destination__container" id="about">
+  <h2 class="section__header">رحلات منظمة</h2>
+  <p class="section__description">اختر من باقاتنا المتنوعة التي تغطي الإقامة، النقل، والدليل.</p>
+
+<div class="omra-wrapper">
+  
+  <!-- Arrows -->
+  
+  <button class="omra-arrow right" id="rightArrow">❮</button>
+
+  <!-- Slider -->
+  <div class="omra-slider" id="omraSlider">
+
+    <!-- tes cards existantes -->
+    <div class="destination__card" >
+      <img src="assets/ISTANBUL-NEW-YEAR-1376X600.png" class="openOmraModal"  >
+      <div class="destination__card__details">
+        <div>
+          <h4>عمرة رمضان</h4>
+          <p>إقامة 4 نجوم - خطوات من الحرم</p>
+        </div>
+         <button class="omra-btn" onclick="location.href='umrah-list.html'" >أكثر تفاصيل </button>
+      </div>
+    </div>
+
+      <div class="destination__card">
+        	<img loading="lazy" decoding="async" width="990" height="490" src="assets/SHARM-CAIRO-2-990x490.png" class="openOmraModal" alt="">				</a>
+        <div class="destination__card__details">
+          <div><h4>شرم والقاهرة</h4><p>أيام8 - 7 ليالٍ</p></div>
             <button class="omra-btn" onclick="location.href='umrah-list.html'" >أكثر تفاصيل </button>
         </div>
       </div>
@@ -278,7 +343,7 @@
       <div class="destination__card">
         <img src="assets/omra fevirier.png" class="openOmraModal" >
         <div class="destination__card__details">
-          <div><h4>عمرة فيفري </h4> <p>عمرة 10 أيام</p> <p>مع ليلة في دبي</p></div>
+          <div><h4>برشلونة</h4> <p>5 أيام - 4 ليالٍ</p> <p> د3190 </p></div>
             <button class="omra-btn" onclick="location.href='umrah-list.html'" >أكثر تفاصيل </button>
         </div>
       </div>
@@ -308,12 +373,10 @@
 
   </div>
 </section>
-
-
   <!-- خدمات مختصرة -->
 <section class="section__container journey__container" id="tour">
   <h2 class="section__header">خدماتنا</h2>
-  <p class="section__description">نقدم خدمات احترافية ومتكاملة لتسهيل رحلتك إلى بيت الله الحرام.</p>
+  <p class="section__descript ion">نقدم خدمات احترافية ومتكاملة لتسهيل رحلتك إلى بيت الله الحرام.</p>
 
   <div class="journey__grid">
 
@@ -516,6 +579,7 @@
       <ul>
         <li><a href="#home">الرئيسية</a></li>
         <li><a href="#about">باقات العمرة</a></li>
+         <li><a href="bus.html">كراء حافلات</a></li>
         <li><a href="#tour">الخدمات</a></li>
         <li><a href="#contact">تواصل</a></li>
       </ul>
@@ -707,8 +771,10 @@ setInterval(() => {
 </script>
 <script>
 function toggleMenu() {
-  document.getElementById("nav-links").classList.toggle("open");
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
 }
+
 </script>
 
 
