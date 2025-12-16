@@ -350,7 +350,29 @@ document.querySelectorAll(".openOmraModal").forEach(img => {
     omraModal.style.display = "flex";
   });
 });
+const menu = document.getElementById("mobileMenu");
+const hamburger = document.getElementById("hamburger");
 
+function toggleMenu() {
+  menu.classList.toggle("open");
+}
+
+/* 🔴 Fermer le menu quand on clique ailleurs */
+document.addEventListener("click", function (e) {
+  const clickedInsideMenu = menu.contains(e.target);
+  const clickedHamburger = hamburger.contains(e.target);
+
+  if (!clickedInsideMenu && !clickedHamburger) {
+    menu.classList.remove("open");
+  }
+});
+
+/* 🔴 Fermer le menu quand on clique sur un lien */
+menu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    menu.classList.remove("open");
+  });
+});
 
 
 

@@ -6,6 +6,7 @@
   <title>قُبَـاء للسفر - عمرة، فنادق، وتذاكر طيران</title>
 
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="styles.css" />
   <style>
@@ -18,7 +19,9 @@
    <!-- 🔵 Top Bar -->
 <div class="topbar">
   <div class="topbar__content">
-
+ <div class="topbar__logo">
+     <img src="assets/logo transparent.png" alt="شعار الوكالة" style="height:55px; cursor:pointer;">
+    </div>
     <div class="topbar__item">
       <span class="topbar__icon"><i class="ri-time-fill"></i></span>
       <span>ساعات العمل: يوميًا من 8:00 صباحًا إلى 18:00</span>
@@ -39,14 +42,23 @@
       <a href="https://www.instagram.com/qoubaavoyage/" target="_blank"><i class="ri-instagram-line"></i></a>
       <a href="https://www.tiktok.com/@qoubaavoyage" target="_blank"><i class="ri-tiktok-fill"></i></a>
     </div>
-
+<div class="hamburger" id="hamburger" onclick="toggleMenu()">☰</div>
   </div>
 </div>
-
+<!-- 📱 Mobile Menu -->
+<div id="mobileMenu" class="mobile-menu">
+  <a href="#home">الرئيسية</a>
+  <a href="umrah-list.html">باقات العمرة</a>
+  <li><a href="bus.html">كراء حافلات</a></li>
+  <a href="#tour">الخدمات</a>
+  <a href="#package">باقة مميزة</a>
+  <a href="#contact">تواصل</a>
+  <a href="#book">احجز الآن</a>
+</div>
   <nav>
 
     <div style="display:flex;align-items:center;gap:16px">
-         <div class="hamburger" onclick="toggleMenu()">☰</div>
+         <div class="hamburger" id="hamburger" onclick="toggleMenu()">☰</div>
       <div class="nav__logo">
 
         <img src="assets/logo qoubaa transparent.png" alt="شعار الوكالة" >
@@ -394,7 +406,7 @@
 
 
   <!-- إحصائيات -->
-  <section class="section__container banner__container">
+  <section class="section__container banner__container" style="background:#00ff00;">
     <div class="banner__card"><h4>23+</h4><p>سنوات الخبرة</p></div>
     <div class="banner__card"><h4>12K</h4><p>معتمر سعيد</p></div>
     <div class="banner__card"><h4>9.8</h4><p>تقييم عام</p></div>
@@ -686,33 +698,9 @@ document.getElementById("serviceType").dispatchEvent(new Event("change"));
 </script>
 
 <script>
-let slides = document.querySelectorAll(".header-slider .slide");
-let index = 0;
-
-function showSlide(i) {
-  slides.forEach(s => s.classList.remove("active"));
-  slides[i].classList.add("active");
-}
-
-document.getElementById("nextSlide").onclick = () => {
-  index = (index + 1) % slides.length;
-  showSlide(index);
-};
-
-document.getElementById("prevSlide").onclick = () => {
-  index = (index - 1 + slides.length) % slides.length;
-  showSlide(index);
-};
-
-// Auto play
-setInterval(() => {
-  index = (index + 1) % slides.length;
-  showSlide(index);
-}, 5000);
-</script>
-<script>
 function toggleMenu() {
-  document.getElementById("nav-links").classList.toggle("open");
+ const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
 }
 </script>
 

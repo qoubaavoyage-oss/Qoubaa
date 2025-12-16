@@ -2633,3 +2633,40 @@ header#home {
   width: 100%;
   max-width: 360px;
 }
+.section__container.banner__container {
+  background: linear-gradient(135deg, #00ff00, #22c55e)  !important;
+  padding: 60px 20px;
+  border-radius: 20px;
+}
+.banner__card {
+  background: #ffffff;
+  color: #0b1a2b;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+/* ===== FIX CLIENT SECTION TEXT COLOR ===== */
+.client__container {
+  background: #ffffff;          /* خلفية بيضاء */
+}
+
+.client__container .section__header {
+  color: #0b1a2b;               /* لون داكن للعناوين */
+}
+
+.client__container .section__description {
+  color: #475569;               /* رمادي أنيق */
+}
+.client__container {
+  background: #f8fafc;
+}
+/* ===== FIX SHOWCASE SECTION TEXT COLORS ===== */
+.showcase__container {
+  background: #ffffff; /* أو أي لون فاتح عندك */
+}
+
+.showcase__content h4 {
+  color: #0b1a2b;      /* لون داكن واضح */
+}
+
+.showcase__content p {
+  color: #475569;      /* رمادي مريح للقراءة */
+}
