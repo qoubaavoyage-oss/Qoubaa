@@ -1,267 +1,356 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Location de Bus – Qoubaa Voyage</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Location de Bus – Qoubaa Voyage</title>
 
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- EMAILJS -->
-  <script src="https://cdn.jsdelivr.net/npm/Qoubaavoyage@gmail.com/dist/email.min.js"></script>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Cairo',Arial,sans-serif;
+  background:#f5f7fb;
+  color:#1e293b;
+}
 
-  <style>
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:'Cairo',Arial,sans-serif;
-      background:#f5f7fb;
-      color:#1e293b;
-    }
+/* ================= NAVBAR ================= */
+.navbar{
+  background:#fff;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.nav-left img{
+  height:55px;
+}
+.nav-left span{
+  font-size:20px;
+  font-weight:700;
+}
+.nav-menu{
+  list-style:none;
+  display:flex;
+  gap:22px;
+  align-items:center;
+}
+.nav-menu li{
+  cursor:pointer;
+  font-weight:600;
+}
+.whatsapp-top{
+  text-decoration:none;
+  color:#25D366;
+  font-weight:700;
+}
+.lang-btn{
+  background:#16a34a;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+}
 
-    /* NAVBAR */
-    .navbar{
-      background:#ffffff;
-      padding:15px 40px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:sticky;
-      top:0;
-      z-index:1000;
-      box-shadow:0 5px 20px rgba(0,0,0,.15);
-    }
-    .nav-left{display:flex;align-items:center;gap:12px}
-    .nav-left img{height:55px}
-    .nav-left span{font-size:22px;font-weight:700;color:#0f172a}
-    .nav-menu{list-style:none;display:flex;gap:30px;margin:0;padding:0}
-    .nav-menu li{cursor:pointer;font-weight:600;color:#334155}
-    .nav-menu li:hover{color:#16a34a}
-    .lang-btn{background:#16a34a;color:#fff;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:700}
+/* ================= HERO ================= */
+.hero{
+  display:grid;
+  grid-template-columns:420px 1fr;
+  min-height:90vh;
+}
+.hero-form{
+  background:#0f172a;
+  padding:40px;
+  color:#fff;
+}
+.hero-form h2{margin-bottom:20px}
+.hero-form label{
+  display:block;
+  margin-top:10px;
+  font-size:14px;
+}
+.hero-form select,
+.hero-form input{
+  width:100%;
+  padding:12px;
+  margin-top:5px;
+  border-radius:10px;
+  border:none;
+}
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.hero-form button{
+  margin-top:25px;
+  padding:14px;
+  background:#22c55e;
+  border:none;
+  border-radius:12px;
+  font-size:18px;
+  cursor:pointer;
+}
+.hero-bg{
+  background:url('assets/grand bus .jpg') center/cover no-repeat;
+}
 
-    /* HERO */
-    .hero{display:grid;grid-template-columns:420px 1fr;min-height:90vh}
-    .hero-form{
-      background:#0f172a;
-      padding:40px;
-      color:#fff;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      animation:slideLeft 1s ease;
-    }
-    @keyframes slideLeft{from{opacity:0;transform:translateX(-60px)}to{opacity:1;transform:none}}
+/* ================= BUS ================= */
+.container{
+  width:92%;
+  max-width:1200px;
+  margin:80px auto;
+  display:none;
+}
+.bus-types{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+.card{
+  background:#fff;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 15px 30px rgba(0,0,0,.25);
+  cursor:pointer;
+  transition:.4s;
+  text-align:center;
+}
+.card:hover{transform:translateY(-10px)}
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+.card p{
+  padding:0 20px 25px;
+  color:#555;
+}
 
-    .hero-form h2{margin-bottom:25px;font-size:28px}
+/* ================= FORM ================= */
+.form-wrapper{
+  max-width:700px;
+  margin:80px auto;
+  background:#fff;
+  padding:40px;
+  border-radius:25px;
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
+  display:none;
+}
+.form-wrapper input{
+  width:100%;
+  padding:14px;
+  margin-bottom:15px;
+  border-radius:12px;
+  border:1px solid #cbd5f5;
+}
+.form-wrapper button{
+  width:100%;
+  padding:16px;
+  background:linear-gradient(135deg,#16a34a,#22c55e);
+  color:#fff;
+  border:none;
+  border-radius:14px;
+  font-size:18px;
+  cursor:pointer;
+}
 
-    .hero-form label{font-size:14px;margin-top:12px}
-    .hero-form select,.hero-form input{
-      width:100%;
-      padding:12px;
-      margin-top:5px;
-      border-radius:10px;
-      border:none;
-    }
-    .hero-form .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .hero-form button{
-      margin-top:25px;
-      padding:14px;
-      background:#22c55e;
-      border:none;
-      border-radius:12px;
-      font-size:18px;
-      font-weight:700;
-      cursor:pointer;
-    }
+/* ================= CONFIRM ================= */
+.confirmation{
+  display:none;
+  text-align:center;
+  margin:100px auto;
+  animation:fadeUp .8s ease;
+}
+.confirmation h2{color:#16a34a}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1}
+}
 
-    .hero-bg{
-      background:url('../assets/bus-bg.jpg') center/cover no-repeat;
-      position:relative;
-      animation:fadeIn 1.5s ease;
-    }
-    .hero-bg::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(90deg,rgba(15,23,42,.6),rgba(15,23,42,.2));
-    }
-
-    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-
-    /* SECTION */
-    .container{width:92%;max-width:1200px;margin:80px auto}
-    h2{text-align:center;margin-bottom:40px;font-size:32px}
-
-    /* BUS CARDS */
-    .bus-types{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
-    .card{
-      background:#fff;
-      border-radius:20px;
-      overflow:hidden;
-      box-shadow:0 15px 30px rgba(0,0,0,.25);
-      cursor:pointer;
-      transition:.4s;
-      text-align:center;
-    }
-    .card:hover{transform:translateY(-12px)}
-    .card img{width:100%;height:220px;object-fit:cover}
-    .card h3{margin:15px 0;font-size:22px}
-    .card p{padding:0 20px 25px;color:hsl(111, 4%, 32%)}
-
-    /* FORM */
-    .form-wrapper{
-      max-width:750px;
-      margin:80px auto;
-      background:#fff;
-      padding:40px;
-      border-radius:25px;
-      box-shadow:0 20px 40px rgba(0,0,0,.35);
-      display:none;
-      animation:fadeUp .6s ease;
-    }
-    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
-
-    .form-wrapper h3{text-align:center;margin-bottom:25px;font-size:26px}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .form-wrapper input,.form-wrapper select{
-      width:100%;
-      padding:14px;
-      border-radius:12px;
-      border:1px solid #cbd5f5;
-      background:#f8fafc;
-    }
-    .form-wrapper button{
-      margin-top:25px;
-      width:100%;
-      padding:16px;
-      background:linear-gradient(135deg,#16a34a,#22c55e);
-      color:#fff;
-      border:none;
-      border-radius:14px;
-      font-size:18px;
-      cursor:pointer;
-    }
-
-    @media(max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .hero-bg{display:none}
-      .grid{grid-template-columns:1fr}
-      .nav-menu{display:none}
-    }
-  </style>
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-bg{display:none}
+  .nav-menu{display:none}
+}
+</style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-left">
-    <img src="assets/logo qoubaa transparent.png" alt="Qoubaa">
-    <span id="navTitle"> Agence Qoubaa pour voyage et tourisme  Voyage</span>
+    <img src="assets/logo qoubaa transparent.png" alt="Qoubaa Voyage">
+    <span id="agencyName">Qoubaa Voyage & Tourisme</span>
   </div>
+
   <ul class="nav-menu">
-    <li>Accueil</li><li>Réservation</li><li>Agences</li><li>Contact</li>
+    <li onclick="location.href='index.html'" id="accueil">Accueil</li>
+    <li onclick="document.querySelector('.hero').scrollIntoView({behavior:'smooth'})"></li>
+    <li id="contact">Contact</li>
+    <li>
+      <a class="whatsapp-top" href="https://wa.me/21655524355" target="_blank">💬 WhatsApp</a>
+    </li>
+    <li class="lang-btn" onclick="toggleLang()">AR / FR</li>
   </ul>
-  <div class="lang-btn" onclick="toggleLang()">AR / FR</div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-form">
-    <h2 id="heroTitle">Réservez votre bus</h2>
+<div class="hero-form">
+<h2 id="title">Réservez votre bus</h2>
 
-    <label>Ville de départ</label>
-    <select><option>Tunis</option><option>Sousse</option><option>Sfax</option></select>
+<label id="vd">Ville de départ</label>
+<select id="villeDepart">
+<option>Tunis</option><option>Ariana</option><option>Ben Arous</option><option>Manouba</option>
+<option>Nabeul</option><option>Zaghouan</option><option>Bizerte</option><option>Béja</option>
+<option>Jendouba</option><option>Le Kef</option><option>Siliana</option><option>Sousse</option>
+<option>Monastir</option><option>Mahdia</option><option>Kairouan</option><option>Kasserine</option>
+<option>Sidi Bouzid</option><option>Sfax</option><option>Gabès</option><option>Médenine</option>
+<option>Tataouine</option><option>Gafsa</option><option>Tozeur</option><option>Kébili</option>
+</select>
 
-    <label>Ville d’arrivée</label>
-    <select><option>Sousse</option><option>Tunis</option></select>
+<label id="va">Ville d’arrivée</label>
+<select id="villeArrivee">
+<option>Tunis</option><option>Ariana</option><option>Ben Arous</option><option>Manouba</option>
+<option>Nabeul</option><option>Zaghouan</option><option>Bizerte</option><option>Béja</option>
+<option>Jendouba</option><option>Le Kef</option><option>Siliana</option><option>Sousse</option>
+<option>Monastir</option><option>Mahdia</option><option>Kairouan</option><option>Kasserine</option>
+<option>Sidi Bouzid</option><option>Sfax</option><option>Gabès</option><option>Médenine</option>
+<option>Tataouine</option><option>Gafsa</option><option>Tozeur</option><option>Kébili</option>
+</select>
 
-    <div class="row">
-      <div>
-        <label>Date départ</label>
-        <input type="date">
-      </div>
-      <div>
-        <label>Date retour</label>
-        <input type="date">
-      </div>
-    </div>
+<div class="row">
+<div>
+<label id="dd">Date de départ</label>
+<input type="date" id="dateDepart">
+</div>
+<div>
+<label id="da">Date d’arrivée</label>
+<input type="date" id="dateRetour">
+</div>
+</div>
 
-    <div class="row">
-      <div>
-        <label>Heure départ</label>
-        <input type="time">
-      </div>
-      <div>
-        <label>Heure retour</label>
-        <input type="time">
-      </div>
-    </div>
+<div class="row">
+<div>
+<label id="hd">Heure de départ</label>
+<input type="time" id="heureDepart">
+</div>
+<div>
+<label id="ha">Heure d’arrivée</label>
+<input type="time" id="heureRetour">
+</div>
+</div>
 
-    <button>Rechercher</button>
-  </div>
-  <div class="hero-bg">
-     <img src="assets/grand bus .jpg">
-  </div>
+<button onclick="showBus()" id="search">Rechercher</button>
+</div>
+<div class="hero-bg"></div>
 </section>
 
-<section class="container">
-  <h2 id="busTitle">Nos types de bus</h2>
+<!-- BUS -->
+<section class="container" id="busSection">
+<h2 id="types">Nos types de bus</h2>
 
-  <div class="bus-types">
-    <div class="card" onclick="selectBus('Micro Bus – 15 places')">
-      <img src="assets/micro bus 15.jpg">
-      <h3 id="b1">Micro Bus (15)</h3>
-      <p id="d1">Idéal pour petits groupes et trajets courts.</p>
-    </div>
-    <div class="card" onclick="selectBus('Mini Bus – 30 places')">
-      <img src="assets/minu bus.webp">
-      <h3 id="b2">Mini Bus (30)</h3>
-      <p id="d2">Confortable et climatisé pour voyages inter-villes.</p>
-    </div>
-    <div class="card" onclick="selectBus('Grand Bus – 55 places')">
-      <img src="assets/grand bus .jpg">
-      <h3 id="b3">Grand Bus (55)</h3>
-      <p id="d3">Pour grands groupes, écoles et longues distances.</p>
-    </div>
-  </div>
+<div class="bus-types">
+<div class="card" onclick="selectBus('Micro Bus – 15 places')">
+<img src="assets/micro bus 15.jpg">
+<h3>Micro Bus (15 places)</h3>
+<p>Idéal pour petits groupes et trajets courts.</p>
+</div>
+
+<div class="card" onclick="selectBus('Mini Bus – 30 places')">
+<img src="assets/minu bus.webp">
+<h3>Mini Bus (30 places)</h3>
+<p>Confortable, climatisé, voyages inter-villes.</p>
+</div>
+
+<div class="card" onclick="selectBus('Grand Bus – 55 places')">
+<img src="assets/grand bus .jpg">
+<h3>Grand Bus (55 places)</h3>
+<p>Pour écoles, agences et grands groupes.</p>
+</div>
+</div>
 </section>
 
+<!-- FORM -->
 <div class="form-wrapper" id="formBox">
-  <h3 id="formTitle">Réservation de bus</h3>
-  <form id="busForm">
-    <input type="text" id="busType" readonly>
-    <div class="grid">
-    
-    </div>
-    <input type="text" placeholder="Nom et prénom" required>
-    <input type="tel" placeholder="Téléphone" required>
-    <input type="email" placeholder="Email" required>
-    <button>Envoyer la réservation</button>
-  </form>
+<form onsubmit="sendEmail(event)">
+<input type="text" id="busType" readonly>
+<input type="text" id="nom" placeholder="Nom et prénom" required>
+<input type="tel" id="tel" placeholder="Téléphone" required>
+<input type="email" id="email" placeholder="Email" required>
+<button>Envoyer la réservation</button>
+</form>
+</div>
+
+<!-- CONFIRMATION -->
+<div class="confirmation" id="confirmation">
+<h2>✅ Réservation envoyée avec succès</h2>
+<p>Notre agence vous contactera très rapidement.</p>
 </div>
 
 <script>
-function selectBus(type){
-  document.getElementById('formBox').style.display='block';
-  document.getElementById('busType').value=type;
-  document.getElementById('formBox').scrollIntoView({behavior:'smooth'});
+function showBus(){
+  busSection.style.display='block';
+  busSection.scrollIntoView({behavior:'smooth'});
 }
+function selectBus(type){
+  busType.value=type;
+  formBox.style.display='block';
+  formBox.scrollIntoView({behavior:'smooth'});
+}
+function sendEmail(e){
+  e.preventDefault();
+  const body=
+`Client :
+${nom.value}
+Téléphone : ${tel.value}
+Email : ${email.value}
 
+Type de bus : ${busType.value}
+
+Ville de départ : ${villeDepart.value}
+Ville d’arrivée : ${villeArrivee.value}
+
+Date de départ : ${dateDepart.value}
+Heure de départ : ${heureDepart.value}
+
+Date d’arrivée : ${dateRetour.value}
+Heure d’arrivée : ${heureRetour.value}`;
+  window.location.href=
+`mailto:qoubaavoyage@gmail.com?subject=Réservation Bus&body=${encodeURIComponent(body)}`;
+  formBox.style.display='none';
+  confirmation.style.display='block';
+}
 function toggleLang(){
   const html=document.documentElement;
   if(html.lang==='fr'){
     html.lang='ar';html.dir='rtl';
-    navTitle.innerText='قباء للأسفار';
-    heroTitle.innerText='احجز حافلتك';
-    busTitle.innerText='أنواع الحافلات';
-    formTitle.innerText='استمارة الحجز';
-    b1.innerText='حافلة صغيرة (15)';
-    b2.innerText='حافلة متوسطة (30)';
-    b3.innerText='حافلة كبيرة (55)';
-    d1.innerText='مناسبة للمجموعات الصغيرة والتنقلات القصيرة.';
-    d2.innerText='مريحة ومكيفة للرحلات بين المدن.';
-    d3.innerText='للمجموعات الكبيرة والمدارس.';
-  }else{location.reload();}
+    agencyName.innerText='وكالة قباء للأسفار والسياحة';
+    title.innerText='احجز حافلتك';
+    vd.innerText='مدينة الانطلاق';
+    va.innerText='مدينة الوصول';
+    dd.innerText='تاريخ الانطلاق';
+    da.innerText='تاريخ الوصول';
+    hd.innerText='وقت الانطلاق';
+    ha.innerText='وقت الوصول';
+    search.innerText='بحث';
+    types.innerText='أنواع الحافلات';
+  }else location.reload();
 }
 </script>
 
