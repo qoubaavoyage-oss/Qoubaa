@@ -522,6 +522,24 @@ body {
 .container {
   background: transparent;
 }
+.omra-card {
+  position: relative;
+}
+
+.main-price {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(135deg, #d60000, #ff3b3b);
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  z-index: 5;
+}
+
 </style>
 </head>
 
@@ -627,108 +645,62 @@ body {
    
   </div>
 <script>
-/* ========= OFFRES OMRA AVEC DATES ========= */
-const omraOffers = [
- {
-  name: "عمرة رجب",
-  img: "assets/rjab.png",
-  desc: "إقامة 10 أيام في مكة و5 أيام في المدينة. فندق 4 نجوم شامل نقل.",
+fetch("https://qoubaavoyage.com/wp-json/wp/v2/omra")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("umraResults");
+    container.innerHTML = "";
 
-  dates: [
-    { date: "30 ديسمبر", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
-    { date: "01 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
-    { date: "03 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
-    { date: "06 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
-    { date: "08 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
-    { date: "10 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
-    { date: "13 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
-    { date: "15 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } },
-    { date: "17 جانفي", rooms: { A2: "5150", A3: "4700", A4: "4350" } }
-  ],
+    data.forEach(o => {
+      const name = o.title.rendered;
+      const desc = o.acf.description || "";
+      const img  = o.acf.image || "assets/rjab.png";
+      const mainPrice = o.acf.main_price || "";
 
-  // Peut être supprimé, mais tu peux le garder pour affichage général
-  price: "4350 TND"
-}
+      let dates = [];
+      try {
+        dates = JSON.parse(o.acf.dates_prices || "[]");
+      } catch(e) {}
 
-,
- {
-  name: "عمرة شعبان",
-  img: "assets/chaabeen.png",
-  desc: "برنامج فاخر مع فندق 5 نجوم. شامل النقل والزيارات.",
+      let datesHTML = dates.map((d, index) => {
+        let id = `${o.id}_${index}`;
+        return `
+          <div class="date-row">
+            <span>📅 ${d.date}</span>
+            <button class="price-btn" onclick="togglePrice('${id}')">
+              عرض الأسعار
+            </button>
+            <div class="price-pop" id="${id}">
+              <div>A2: ${d.A2} TND</div>
+              <div>A3: ${d.A3} TND</div>
+              <div>A4: ${d.A4} TND</div>
+            </div>
+          </div>
+        `;
+      }).join("");
 
-  dates: [
-    { date: "20 جانفي", rooms: { A2: 5150, A3: 4700, A4: 4350 }},
-    { date: "22 جانفي", rooms: { A2: 5150, A3: 4700, A4: 4350 }},
-    { date: "24 جانفي", rooms: { A2: 5150, A3: 4700, A4: 4350 }},
-    { date: "27 جانفي", rooms: { A2: 5150, A3: 4700, A4: 4350 }},
-    { date: "29 جانفي", rooms: { A2: 5150, A3: 4700, A4: 4350 }},
-
-    { date: "31 جانفي", rooms: { A2: 4500, A3: 4200, A4: 3900 }},
-
-    { date: "03 فيفري", rooms: { A2: 5150, A3: 4700, A4: 4350 }},
-    { date: "05 فيفري", rooms: { A2: 5450, A3: 4950, A4: 4500 }},
-    { date: "07 فيفري", rooms: { A2: 5750, A3: 5100, A4: 4650 }},
-    { date: "10 فيفري", rooms: { A2: 6150, A3: 5300, A4: 4850 }},
-    { date: "12 فيفري", rooms: { A2: 6450, A3: 5550, A4: 5050 }},
-    { date: "14 فيفري", rooms: { A2: 7050, A3: 5950, A4: 5350 }},
-    { date: "16 فيفري", rooms: { A2: 7150, A3: 6050, A4: 5450 }},
-    { date: "17 فيفري", rooms: { A2: 7100, A3: 6100, A4: 5500 }},
-    { date: "18 فيفري", rooms: { A2: 11000, A3: 9500, A4: 8500 }}
-  ],
-
-  price: null // لم نعد نحتاج "السعر العام" لأن كل تاريخ عنده سعر مستقل
-}
-
-];
-
-
-/* ========= INJECT HTML ========= */
-let container = document.getElementById("umraResults");
-
-omraOffers.forEach(o => {
-  let datesHTML = o.dates.map((d, index) => {
-    let id = `${o.name.replace(/\s+/g,'')}_${index}`;
-
-    return `
-      <div class="date-row">
-        <span>📅 ${d.date}</span>
-
-        <button class="price-btn" onclick="togglePrice('${id}')">
-          عرض الأسعار
-        </button>
-
-        <div class="price-pop" id="${id}">
-          <div>A2: ${d.rooms.A2} TND</div>
-          <div>A3: ${d.rooms.A3} TND</div>
-          <div>A4: ${d.rooms.A4} TND</div>
+      container.innerHTML += `
+        <div class="omra-card">
+          ${mainPrice ? `<div class="main-price">ابتداءً من ${mainPrice} TND</div>` : ""}
+          <img src="${img}">
+          <div class="omra-info">
+            <h3>${name}</h3>
+            <p class="desc">${desc}</p>
+            <div class="dates-title">🗓 مواعيد الانطلاق:</div>
+            <div class="dates-column">${datesHTML}</div>
+            <button class="btn openReservation">احجز الآن</button>
+          </div>
         </div>
-      </div>
-    `;
-  }).join("");
-
-  container.innerHTML += `
-    <div class="omra-card">
-      <img src="${o.img}">
-      <div class="omra-info">
-        <h3>${o.name}</h3>
-        <p class="desc">${o.desc}</p>
-
-        <div class="dates-title">🗓 مواعيد الانطلاق:</div>
-        <div class="dates-column">${datesHTML}</div>
-
-        <button class="btn openReservation">احجز الآن</button>
-      </div>
-    </div>
-  `;
-});
+      `;
+    });
+  });
 
 function togglePrice(id) {
   const popup = document.getElementById(id);
   popup.style.display = popup.style.display === "block" ? "none" : "block";
 }
-
-
 </script>
+
 <script>
 function openModal() {
     document.getElementById('searchModal').style.display = 'flex';
