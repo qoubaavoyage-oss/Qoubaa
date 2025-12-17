@@ -91,8 +91,9 @@
   <!-- HEADER -->
   <header id="home" class="fade-in">
     <div class="header__content">
-      <p>خدمات سفر متكاملة: عمرة، فنادق، وتذاكر طيران</p>
-      <h1>نحن نسهّل رحلتك من التخطيط إلى العودة</h1>
+  
+      <p class="styling">خدمات سفر متكاملة: عمرة، فنادق، وتذاكر طيران</p>
+      <h1 class="med">نحن نسهّل رحلتك من التخطيط إلى العودة</h1>
 
       <div class="header__btns" style="margin-top:14px">
         <!-- SEARCH FORM -->
@@ -126,7 +127,7 @@
 
   <!-- SELECT مخفي لأن JS يحتاجه -->
   <select id="serviceType" style="display:none">
-    <option value="umrah">العمرة</option>
+    <option value="umrah">العمرة</option> 
     <option value="hotel">حجز فندق</option>
     <option value="flight">حجز تذكرة طيران</option>
   </select>
@@ -249,9 +250,7 @@
       </div>
     </div>
 
-    <div class="header__image">
-      <img src="assets/kaabaa.jpg" alt="الكعبة">
-    </div>
+
   </header>
 
   <!-- باقات و محتوى (أمثلة كما سابقاً) -->
@@ -270,10 +269,10 @@
 
     <!-- tes cards existantes -->
     <div class="destination__card" >
-      <img src="assets/omra 35 J.png" class="openOmraModal"  >
+      <img src="assets/rjab.png" class="openOmraModal"  >
       <div class="destination__card__details">
         <div>
-          <h4>عمرة رمضان</h4>
+          <h4>عمرة رجب</h4>
           <p>إقامة 4 نجوم - خطوات من الحرم</p>
         </div>
          <button class="omra-btn" onclick="location.href='umrah-list.html'" >أكثر تفاصيل </button>
@@ -281,40 +280,22 @@
     </div>
 
       <div class="destination__card">
-        <img src="assets/gg.jpg" class="openOmraModal" >
+        <img src="assets/chaabeen.png" class="openOmraModal" >
         <div class="destination__card__details">
-          <div><h4>حجز فندق مريح</h4><p>فنادق قرب الحرم ومرافق مميزة</p></div>
+          <div><h4>عمرة شعبان</h4><p>فنادق قرب الحرم ومرافق مميزة</p></div>
             <button class="omra-btn" onclick="location.href='umrah-list.html'" >أكثر تفاصيل </button>
         </div>
       </div>
       
       <div class="destination__card">
-        <img src="assets/omra fevirier.png" class="openOmraModal" >
+        <img src="assets/ramadan35j.png" class="openOmraModal" >
         <div class="destination__card__details">
-          <div><h4>عمرة فيفري </h4> <p>عمرة 10 أيام</p> <p>مع ليلة في دبي</p></div>
+          <div><h4>عمرة رمضان  </h4> <p>عمرة 35 أيام</div>
             <button class="omra-btn" onclick="location.href='umrah-list.html'" >أكثر تفاصيل </button>
         </div>
       </div>
 
-         <div class="destination__card">
-        <img src="assets/omra fevirier.png" class="openOmraModal" >
-        <div class="destination__card__details">
-          <div><h4>عمرة فيفري </h4> <p>عمرة 10 أيام</p> <p>مع ليلة في دبي</p></div>
-            <button class="omra-btn" onclick="location.href='umrah-list.html'" >أكثر تفاصيل </button>
-        </div>
-      </div>   <div class="destination__card">
-        <img src="assets/omra fevirier.png" class="openOmraModal" >
-        <div class="destination__card__details">
-          <div><h4>عمرة فيفري </h4> <p>عمرة 10 أيام</p> <p>مع ليلة في دبي</p></div>
-            <button class="omra-btn" onclick="location.href='umrah-list.html'" >أكثر تفاصيل </button>
-        </div>
-      </div>   <div class="destination__card">
-        <img src="assets/omra fevirier.png" class="openOmraModal" >
-        <div class="destination__card__details">
-          <div><h4>عمرة فيفري </h4> <p>عمرة 10 أيام</p> <p>مع ليلة في دبي</p></div>
-            <button class="omra-btn" onclick="location.href='umrah-list.html'" >أكثر تفاصيل </button>
-        </div>
-      </div>
+     
     </div>
 
   <button class="omra-arrow left" id="leftArrow">❯</button>
@@ -406,7 +387,7 @@
 
 
   <!-- إحصائيات -->
-  <section class="section__container banner__container" style="background:#00ff00;">
+  <section class="section__container banner__container" >
     <div class="banner__card"><h4>23+</h4><p>سنوات الخبرة</p></div>
     <div class="banner__card"><h4>12K</h4><p>معتمر سعيد</p></div>
     <div class="banner__card"><h4>9.8</h4><p>تقييم عام</p></div>
@@ -504,7 +485,7 @@
 
   <!-- Footer -->
   <footer id="contact" class="footer">
-  <div class="section__container footer__container">
+  <div class="section__container footer__container samir">
 
     <!-- Logo + Description -->
     <div class="footer__col">
