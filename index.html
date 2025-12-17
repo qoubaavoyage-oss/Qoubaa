@@ -661,11 +661,11 @@ document.getElementById("serviceType").dispatchEvent(new Event("change"));
 
   // --- Flèches manuelles ---
   leftArrow.addEventListener("click", () => {
-    slider.scrollBy({ left: -350, behavior: "smooth" });
+    slider.scrollBy({ left: -250, behavior: "smooth" });
   });
 
   rightArrow.addEventListener("click", () => {
-    slider.scrollBy({ left: 350, behavior: "smooth" });
+    slider.scrollBy({ left: 250, behavior: "smooth" });
   });
 
 
@@ -685,7 +685,7 @@ document.getElementById("serviceType").dispatchEvent(new Event("change"));
       direction = 1;
     }
 
-    slider.scrollBy({ left: 350 * direction, behavior: "smooth" });
+    slider.scrollBy({ left: 250 * direction, behavior: "smooth" });
   }
 
   // ⚠️ Positionner le slider TOUT À DROITE au démarrage
@@ -694,7 +694,7 @@ document.getElementById("serviceType").dispatchEvent(new Event("change"));
   });
 
   // Début auto-scroll
-  setInterval(autoScroll, 2000);
+  setInterval(autoScroll, 3000);
 </script>
 
 <script>
