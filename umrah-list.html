@@ -657,6 +657,126 @@ body {
     height: 200px;
   }
 }
+/* ===========================
+   OMRA LISTING – FIX VISIBILITÉ
+   =========================== */
+
+.omra-item {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 220px 1fr 200px;
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* IMAGE */
+.omra-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* TEXTE */
+.omra-content {
+  color: #1f2937; /* gris foncé lisible */
+}
+
+.omra-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.omra-desc {
+  color: #4b5563;
+  font-size: 15px;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+/* DURÉE */
+.omra-meta {
+  margin-bottom: 12px;
+}
+
+.omra-meta .duration {
+  background: #f3f4f6;
+  color: #1f2937;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* DATES */
+.departures h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.departures ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.departures li {
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+/* PRIX */
+.omra-price {
+  text-align: center;
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.omra-price .price {
+  font-size: 24px;
+  font-weight: 800;
+  color: #b45309; /* doré élégant */
+  margin-bottom: 12px;
+}
+
+/* BOUTON */
+.btn-details {
+  display: inline-block;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff !important;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-details:hover {
+  opacity: 0.9;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .omra-item {
+    grid-template-columns: 1fr;
+  }
+
+  .omra-price {
+    margin-top: 10px;
+  }
+}
+
 
 </style>
 </head>
@@ -763,34 +883,35 @@ body {
    
   </div>
 <script>
-fetch("https://qoubaavoyage.com/wordpress/index.php/wp-json/wp/v2/omra")
+fetch("https://qoubaavoyage.com/wordpress/index.php/wp-json/wp/v2/omra?_embed")
   .then(res => res.json())
-  .then(async data => {
+  .then(data => {
 
     const container = document.getElementById("umraResults");
     container.innerHTML = "";
 
-    for (const o of data) {
+    data.forEach(o => {
 
-      /* Image */
-      let image = "";
-      if (o.featured_media) {
-        const media = await fetch(
-          `https://qoubaavoyage.com/wordpress/index.php/wp-json/wp/v2/media/${o.featured_media}`
-        ).then(r => r.json());
-        image = media.source_url;
+      /* ✅ IMAGE */
+      let image = "assets/rjab.png";
+      if (
+        o._embedded &&
+        o._embedded["wp:featuredmedia"] &&
+        o._embedded["wp:featuredmedia"][0]?.source_url
+      ) {
+        image = o._embedded["wp:featuredmedia"][0].source_url;
       }
 
-      /* Champs */
+      /* ✅ CHAMPS */
       const title = o.title.rendered;
       const desc  = o.content.rendered;
-      const price = o.meta?.main_price || "";
-      const duration = o.meta?.duration || "";
+      const price = o.acf?.main_price || "";
+      const duration = o.acf?.duration || "";
 
-      /* Dates */
+      /* ✅ DATES */
       let datesHTML = "";
-      if (o.meta?.depart_dates) {
-        datesHTML = o.meta.depart_dates
+      if (o.acf?.depart_dates) {
+        datesHTML = o.acf.depart_dates
           .split("\n")
           .map(d => `<li>${d}</li>`)
           .join("");
@@ -799,11 +920,15 @@ fetch("https://qoubaavoyage.com/wordpress/index.php/wp-json/wp/v2/omra")
       container.innerHTML += `
         <div class="omra-item">
           <div class="omra-image">
-            <img src="${image}">
+            <img src="${image}" alt="${title}">
           </div>
 
           <div class="omra-content">
             <h3 class="omra-title">${title}</h3>
+
+            <div class="omra-desc">
+              ${desc}
+            </div>
 
             <div class="omra-meta">
               <span class="duration">⏱ ${duration}</span>
@@ -821,9 +946,11 @@ fetch("https://qoubaavoyage.com/wordpress/index.php/wp-json/wp/v2/omra")
           </div>
         </div>
       `;
-    }
+    });
   });
 </script>
+
+
 
 
 <script>
