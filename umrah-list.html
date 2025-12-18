@@ -539,6 +539,124 @@ body {
   box-shadow: 0 6px 15px rgba(0,0,0,0.25);
   z-index: 5;
 }
+/* ===== OMRA CARD ===== */
+.omra-item {
+  display: grid;
+  grid-template-columns: 320px 1fr 220px;
+  gap: 30px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  align-items: center;
+}
+
+/* ===== IMAGE ===== */
+.omra-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* ===== CONTENT ===== */
+.omra-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.omra-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+}
+
+.omra-meta {
+  color: #ff7a00;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* ===== DEPARTURES ===== */
+.departures {
+  border-top: 1px solid #eaeaea;
+  padding-top: 15px;
+}
+
+.departures h4 {
+  font-size: 15px;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.departures ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.departures li {
+  font-size: 15px;
+  color: #222;
+  margin-bottom: 6px;
+  position: relative;
+  padding-left: 22px;
+}
+
+.departures li::before {
+  content: "🕒";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* ===== PRICE BLOCK ===== */
+.omra-price {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.omra-price .price {
+  font-size: 32px;
+  font-weight: 800;
+  color: #444;
+}
+
+/* ===== BUTTON ===== */
+.btn-details {
+  background: #ff7a00;
+  color: #fff;
+  padding: 14px 26px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+
+.btn-details:hover {
+  background: #e96e00;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .omra-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .omra-price {
+    align-items: center;
+  }
+
+  .omra-image img {
+    height: 200px;
+  }
+}
 
 </style>
 </head>
@@ -647,59 +765,66 @@ body {
 <script>
 fetch("https://qoubaavoyage.com/wordpress/wp-json/wp/v2/omra")
   .then(res => res.json())
-  .then(data => {
+  .then(async data => {
+
     const container = document.getElementById("umraResults");
     container.innerHTML = "";
 
-    data.forEach(o => {
-      const name = o.title.rendered;
-      const desc = o.acf.description || "";
-      const img  = o.acf.image || "assets/rjab.png";
-      const mainPrice = o.acf.main_price || "";
+    for (const o of data) {
 
-      let dates = [];
-      try {
-        dates = JSON.parse(o.acf.dates_prices || "[]");
-      } catch(e) {}
+      /* Image */
+      let image = "";
+      if (o.featured_media) {
+        const media = await fetch(
+          `https://qoubaavoyage.com/wordpress/index.php/wp-json/wp/v2/media/${o.featured_media}`
+        ).then(r => r.json());
+        image = media.source_url;
+      }
 
-      let datesHTML = dates.map((d, index) => {
-        let id = `${o.id}_${index}`;
-        return `
-          <div class="date-row">
-            <span>📅 ${d.date}</span>
-            <button class="price-btn" onclick="togglePrice('${id}')">
-              عرض الأسعار
-            </button>
-            <div class="price-pop" id="${id}">
-              <div>A2: ${d.A2} TND</div>
-              <div>A3: ${d.A3} TND</div>
-              <div>A4: ${d.A4} TND</div>
-            </div>
-          </div>
-        `;
-      }).join("");
+      /* Champs */
+      const title = o.title.rendered;
+      const desc  = o.content.rendered;
+      const price = o.meta?.main_price || "";
+      const duration = o.meta?.duration || "";
+
+      /* Dates */
+      let datesHTML = "";
+      if (o.meta?.depart_dates) {
+        datesHTML = o.meta.depart_dates
+          .split("\n")
+          .map(d => `<li>${d}</li>`)
+          .join("");
+      }
 
       container.innerHTML += `
-        <div class="omra-card">
-          ${mainPrice ? `<div class="main-price">ابتداءً من ${mainPrice} TND</div>` : ""}
-          <img src="${img}">
-          <div class="omra-info">
-            <h3>${name}</h3>
-            <p class="desc">${desc}</p>
-            <div class="dates-title">🗓 مواعيد الانطلاق:</div>
-            <div class="dates-column">${datesHTML}</div>
-            <button class="btn openReservation">احجز الآن</button>
+        <div class="omra-item">
+          <div class="omra-image">
+            <img src="${image}">
+          </div>
+
+          <div class="omra-content">
+            <h3 class="omra-title">${title}</h3>
+
+            <div class="omra-meta">
+              <span class="duration">⏱ ${duration}</span>
+            </div>
+
+            <div class="departures">
+              <h4>Prochain départ</h4>
+              <ul>${datesHTML}</ul>
+            </div>
+          </div>
+
+          <div class="omra-price">
+            <span class="price">${price} DT</span>
+            <a href="${o.link}" class="btn-details">Voir les détails</a>
           </div>
         </div>
       `;
-    });
+    }
   });
-
-function togglePrice(id) {
-  const popup = document.getElementById(id);
-  popup.style.display = popup.style.display === "block" ? "none" : "block";
-}
 </script>
+
 
 <script>
 function openModal() {
