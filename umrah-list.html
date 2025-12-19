@@ -3,7 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="icon" type="image/png" href="assets/logo qoubaa transparent.png" />
-   <link rel="stylesheet" href="styles.css" />
+   <link rel="stylesheet" href="styles.css?v=1" />
 <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -766,7 +766,7 @@ body {
 .omra-price .price {
   font-size: 28px;
   font-weight: 800;
-  color: #b45309;
+  color: hwb(122 3% 11%);
 }
 
 /* BUTTON */
@@ -807,6 +807,12 @@ body {
   font-weight: 800;
   color: #0f172a;
   margin-bottom: 50px;
+}
+#loader {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #777;
 }
 
 
@@ -883,6 +889,13 @@ body {
   <h2>عروض العمرة المتوفرة</h2>
   <div id="umraResults"></div>
 </div>
+  <!-- ✅ LOADER (UNE SEULE FOIS) -->
+  <div id="loader">Chargement des offres Omra...</div>
+
+  <!-- ✅ RESULTATS -->
+  <div id="umraResults"></div>
+
+
   <!-- Modal -->
   <div id="searchModal" class="modal" aria-hidden="true">
     <div class="modal-content" role="dialog" id="search" aria-modal="true" aria-labelledby="modalTitle">
@@ -915,71 +928,75 @@ body {
    
   </div>
 <script>
-fetch("https://qoubaavoyage.com/wordpress/index.php/wp-json/wp/v2/omra?_embed")
+const container = document.getElementById("umraResults");
+const loader = document.getElementById("loader");
+
+fetch("https://qoubaavoyage.com/wordpress/index.php/wp-json/wp/v2/omra?_embed&per_page=6")
   .then(res => res.json())
   .then(data => {
-
-    const container = document.getElementById("umraResults");
+    if (loader) loader.style.display = "none";
     container.innerHTML = "";
 
+    const fragment = document.createDocumentFragment();
+
     data.forEach(o => {
-      /* ✅ CHAMPS */
       const title = o.title.rendered;
-      const desc  = o.content.rendered;
+      const desc = o.content.rendered;
       const price = o.acf?.main_price || "";
       const duration = o.acf?.duration || "";
-    let image = "assets/rjab.png";
-      if (
-        o._embedded &&
-        o._embedded["wp:featuredmedia"] &&
-        o._embedded["wp:featuredmedia"][0]?.source_url
-      ) {
-        image = o._embedded["wp:featuredmedia"][0].source_url;
+
+      let image = "assets/rjab.png";
+      const media = o._embedded?.["wp:featuredmedia"]?.[0];
+      if (media?.media_details?.sizes?.medium_large?.source_url) {
+        image = media.media_details.sizes.medium_large.source_url;
       }
-      /* ✅ DATES */
-   /* ✅ DATES */
+
       let datesHTML = "";
       if (o.acf?.depart_dates) {
         datesHTML = o.acf.depart_dates
           .split("\n")
-          .filter(d => d.trim() !== "")
-          .map(d => `<li><span class="date-icon">🕒</span>${d}</li>`)
+          .filter(d => d.trim())
+          .map(d => `<li>🕒 ${d}</li>`)
           .join("");
       }
 
-      container.innerHTML += `
-        <div class="omra-item">
-          <div class="omra-image">
-            <img src="${image}" alt="${title}" loading="lazy">
-          </div>
+      const div = document.createElement("div");
+      div.className = "omra-item";
+      div.innerHTML = `
+        <div class="omra-image">
+          <img src="${image}" alt="${title}" loading="lazy">
+        </div>
 
-          <div class="omra-content">
-            <h3 class="omra-title">${title}</h3>
-          <div class="omra-meta">
-                      <span class="duration">⏱ ${duration}</span>
-                    </div>
+        <div class="omra-content">
+          <h3 class="omra-title">${title}</h3>
+          <span class="duration">⏱ ${duration}</span>
 
-            <div class="omra-desc">
-              ${desc}
-            </div>
+          <div class="omra-desc">${desc}</div>
 
-         
-
-            <div class="departures">
+          <div class="departures">
             <h4>Prochains départs</h4>
-              <ul>${datesHTML}</ul>
-            </div>
-          </div>
-
-          <div class="omra-price">
-            <span class="price">${price} DT</span>
-            <a href="${o.link}" class="btn-details">Voir les détails</a>
+            <ul>${datesHTML}</ul>
           </div>
         </div>
+
+        <div class="omra-price">
+          <span class="price">${price} دت</span>
+          <a href="${o.link}" class="btn-details">Voir les détails</a>
+        </div>
       `;
+
+      fragment.appendChild(div);
     });
+
+    container.appendChild(fragment);
+  })
+  .catch(err => {
+    console.error(err);
+    if (loader) loader.innerText = "Erreur de chargement";
   });
 </script>
+
+
 
 
 
