@@ -3051,3 +3051,24 @@ header#home p {
   border-radius: 8px;
   text-decoration: none;
 }
+/* Réduire l'espace entre les sections */
+.section__container {
+  padding-top: 40px;   /* Ajuste selon besoin */
+  padding-bottom: 40px; /* Ajuste selon besoin */
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Réduire l'espace après le titre */
+.section__header {
+  margin-bottom: 10px; /* Au lieu de 20-30px par défaut */
+}
+
+/* Réduire l'espace après la description */
+.section__description {
+  margin-bottom: 20px; /* Ajuste selon le visuel souhaité */
+}
+#tour .section__header {
+  color: #000;       /* noir */
+  opacity: 1;        /* s’il y avait une transparence */
+}
