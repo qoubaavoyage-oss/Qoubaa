@@ -1,0 +1,13 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home3/qoubaavo/public_html/
+    # Copier TOUS les fichiers HTML
+    - /bin/cp *.html $DEPLOYPATH
+
+    # Copier les fichiers JS et CSS principaux
+    - /bin/cp *.js $DEPLOYPATH
+    - /bin/cp *.css $DEPLOYPATH
+
+    # Copier les dossiers
+    - /bin/cp -R assets $DEPLOYPATH
