@@ -499,21 +499,18 @@ body {
 }
 
 .departures li {
-  position: relative;
-  padding-right: 26px; /* espace pour l’icône */
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 14px;
-  color: #334155;
-  line-height: 1.6;
+  color: #374151;
+  margin-bottom: 6px;
 }
 
-.departures li::before {
-  content: "🕒";
-  position: absolute;
-  right: 0;       /* IMPORTANT en RTL */
-  top: 2px;
+
+.date-icon {
   font-size: 14px;
 }
-
 /* ===== PRICE BLOCK ===== */
 .omra-price {
   text-align: right;
@@ -939,11 +936,13 @@ fetch("https://qoubaavoyage.com/wordpress/index.php/wp-json/wp/v2/omra?_embed")
         image = o._embedded["wp:featuredmedia"][0].source_url;
       }
       /* ✅ DATES */
+   /* ✅ DATES */
       let datesHTML = "";
       if (o.acf?.depart_dates) {
         datesHTML = o.acf.depart_dates
           .split("\n")
-          .map(d => `<li>${d}</li>`)
+          .filter(d => d.trim() !== "")
+          .map(d => `<li><span class="date-icon">🕒</span>${d}</li>`)
           .join("");
       }
 
@@ -955,17 +954,18 @@ fetch("https://qoubaavoyage.com/wordpress/index.php/wp-json/wp/v2/omra?_embed")
 
           <div class="omra-content">
             <h3 class="omra-title">${title}</h3>
+          <div class="omra-meta">
+                      <span class="duration">⏱ ${duration}</span>
+                    </div>
 
             <div class="omra-desc">
               ${desc}
             </div>
 
-            <div class="omra-meta">
-              <span class="duration">⏱ ${duration}</span>
-            </div>
+         
 
             <div class="departures">
-              <h4>Prochain départ</h4>
+            <h4>Prochains départs</h4>
               <ul>${datesHTML}</ul>
             </div>
           </div>
