@@ -2664,11 +2664,10 @@ header#home {
 .showcase__content p {
   color: #475569;      /* رمادي مريح للقراءة */
 }
-------------
 header#home {
   min-height: 100vh;
 
-background-color: #00FF00;
+  background-image: url("assets/ste2.jpg");
   background-repeat: no-repeat;
 
   /* ✅ LE PLUS IMPORTANT */
@@ -2772,7 +2771,6 @@ header#home {
   width: 100% !important;
   overflow-x: hidden;
 }
-------------
 #home {
   position: relative;
 
@@ -2785,7 +2783,7 @@ header#home {
 
   min-height: 100vh;
 
-background-color: #00FF00;
+  background-image: url("assets/ste2.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
